@@ -22,6 +22,7 @@
 
   boot.kernel.sysctl = {
     "user.max_user_namespaces" = 28633;
+    "kernel.unprivileged_userns_clone" = 1;
   };
 
   # Enable subuid/subgid mapping for rootless containers
