@@ -20,6 +20,10 @@
     ];
   };
 
+  boot.kernel.sysctl = {
+    "user.max_user_namespaces" = 28633;
+  };
+
   # Enable subuid/subgid mapping for rootless containers
   users.extraUsers.erdosa = {
     isNormalUser = true;
@@ -31,6 +35,7 @@
 
   # Fejlesztői konténer eszközök
   environment.systemPackages = with pkgs; [
+    podman
     podman-compose
     distrobox
     git
