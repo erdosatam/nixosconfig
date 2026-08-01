@@ -8,10 +8,31 @@
     defaultNetwork.settings.dns_enabled = true;
   };
 
+  virtualisation.containers = {
+    enable = true;
+
+    # Configure default search registries for podman/toolbox
+    registries.search = [
+      "docker.io"
+      "quay.io"
+      "registry.fedoraproject.org"
+      "registry.access.redhat.com"
+    ];
+  };
+
+  # Enable subuid/subgid mapping for rootless containers
+  users.extraUsers.erdosa = {
+    isNormalUser = true;
+    extraGroups = [ "podman" ];
+    subUidRanges = [{ startUid = 100000; count = 65536; }];
+    subGidRanges = [{ startGid = 100000; count = 65536; }];
+  };
+
+
   # Fejlesztői konténer eszközök
   environment.systemPackages = with pkgs; [
     podman-compose
-    toolbox
+    distrobox
     git
     curl
     bash
