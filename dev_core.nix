@@ -11,7 +11,7 @@
   # Fejlesztői konténer eszközök
   environment.systemPackages = with pkgs; [
     podman-compose
-    distrobox
+    toolbox
     git
     curl
     bash
@@ -21,7 +21,7 @@
     nodejs
     papirus-icon-theme
     plymouth
-    clang       # C/C++ Compiler
+    clang # C/C++ Compiler
     cmake
     ninja
     gdb
