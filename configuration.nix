@@ -38,8 +38,7 @@
     theme = "breeze";
     settings = {
       Theme = {
-        # Útvonal a kívánt háttérképhez
-        Background = "/usr/share/wallpapers/tgla_wall1.png";
+        Background = "/data/Pictures/tgla_wall1.png";
       };
     };
   };
