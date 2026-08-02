@@ -23,6 +23,8 @@
     	gst_all_1.gst-libav            # FFmpeg-based wrapper plugin (codecs support)
     	gst_all_1.gst-vaapi            # Hardware acceleration (VA-API for Intel/AMD graphics)
 	ffmpeg
+	arc-kde-theme
+	arc-theme
   ];
   environment.sessionVariables = {
     GST_PLUGIN_SYSTEM_PATH_1_0 = "/run/current-system/sw/lib/gstreamer-1.0";
