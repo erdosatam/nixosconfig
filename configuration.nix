@@ -31,6 +31,7 @@
   fonts.packages = with pkgs; [
   # Új, moduláris szintaxis (NixOS 24.05+)
   nerd-fonts.fira-code
+  ];
 
   services.displayManager.sddm = {
     enable = true;
@@ -45,7 +46,6 @@
 
   # VAGY a régi szintaxis (ha régebbi NixOS csatornán vagy):
   # (nerdfonts.override { fonts = [ "FiraCode" ]; })
- ];
   # Időzóna és Nyelv
   time.timeZone = "Europe/Budapest";
   i18n.defaultLocale = "hu_HU.UTF-8";
