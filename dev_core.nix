@@ -40,6 +40,7 @@
     podman-compose
     distrobox
     git
+    glib
     curl
     bash
     ripgrep-all
