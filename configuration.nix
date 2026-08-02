@@ -38,7 +38,7 @@
     theme = "breeze";
     settings = {
       Theme = {
-        Background = "/data/Pictures/tgla_wall1.png";
+        Background = ./wallpapers/tgla_wall1.png;
       };
     };
   };
