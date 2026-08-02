@@ -51,7 +51,7 @@
   i18n.defaultLocale = "hu_HU.UTF-8";
 
   # Display Manager és KDE Plasma Desktop
-  services.displayManager.sddm.enable = true;
+#  services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
 
   # Billentyűzet kiosztás
