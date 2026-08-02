@@ -32,6 +32,16 @@
   # Új, moduláris szintaxis (NixOS 24.05+)
   nerd-fonts.fira-code
 
+  services.displayManager.sddm = {
+    enable = true;
+    settings = {
+      Theme = {
+        # Útvonal a kívánt háttérképhez
+        Background = "/usr/share/wallpapers/tgla_wall1.png";
+      };
+    };
+  };
+
   # VAGY a régi szintaxis (ha régebbi NixOS csatornán vagy):
   # (nerdfonts.override { fonts = [ "FiraCode" ]; })
  ];
