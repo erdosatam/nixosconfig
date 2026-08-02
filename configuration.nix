@@ -34,6 +34,7 @@
 
   services.displayManager.sddm = {
     enable = true;
+    theme = "breeze";
     settings = {
       Theme = {
         # Útvonal a kívánt háttérképhez
