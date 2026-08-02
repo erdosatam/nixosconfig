@@ -41,6 +41,7 @@
     distrobox
     git
     glib
+    glib.dev
     curl
     bash
     ripgrep-all
