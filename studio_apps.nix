@@ -6,13 +6,5 @@
     # Ide írhatod később a stúdió / zeneszerkesztő alkalmazásokat
     # Pl.: ardour, reaper, lmms, carla, stb.
     qpwgraph
-    odin2
-    surge-xt
-    calf
-    gxplugins-lv2
-    guitarix
-    audacity
-    ardour
-    reaper
   ];
 }
