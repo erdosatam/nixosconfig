@@ -11,7 +11,6 @@
     # Pl.: firefox, neovim, vlc, mpv, stb.
    	vim
 	neovim
-	firefox
 	flatpak
 	flatpak-xdg-utils
 	mc
@@ -23,8 +22,8 @@
     	gst_all_1.gst-libav            # FFmpeg-based wrapper plugin (codecs support)
     	gst_all_1.gst-vaapi            # Hardware acceleration (VA-API for Intel/AMD graphics)
 	ffmpeg
-	arc-kde-theme
-	arc-theme
+	kitty
+	wezterm
   ];
   environment.sessionVariables = {
     GST_PLUGIN_SYSTEM_PATH_1_0 = "/run/current-system/sw/lib/gstreamer-1.0";
