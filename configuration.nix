@@ -27,7 +27,6 @@
   environment.sessionVariables = {
     GDK_SCALE = "0.9";
     GDK_DPI_SCALE = "0.9";
-    GTK_MODULES = "appmenu-gtk-module";
   };
   fonts.packages = with pkgs; [
   # Új, moduláris szintaxis (NixOS 24.05+)
@@ -84,11 +83,6 @@
   # Rendszer szintű alap csomagok
   environment.systemPackages = with pkgs; [
 	 kdePackages.breeze-gtk  
-	 appmenu-glib-translator
-	 libdbusmenu
-	 libdbusmenu-qt5
-	 libdbusmenu-gtk3
-	 libdbusmenu-gtk2
   ];
 
   # Rendszer verzió (ne módosítsd telepítés után)
