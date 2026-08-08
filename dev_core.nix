@@ -63,5 +63,7 @@
     shfmt
     unzip
     cargo
+    extra-cmake-modules
+    pkg-config
   ];
 }

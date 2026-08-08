@@ -81,7 +81,7 @@
 
   # Rendszer szintű alap csomagok
   environment.systemPackages = with pkgs; [
-    
+	 kdePackages.breeze-gtk   
   ];
 
   # Rendszer verzió (ne módosítsd telepítés után)
