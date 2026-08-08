@@ -63,7 +63,7 @@
     shfmt
     unzip
     cargo
-    extra-cmake-modules
+    libsForQt5.extra-cmake-modules
     pkg-config
   ];
 }
