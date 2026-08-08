@@ -63,6 +63,7 @@
     shfmt
     unzip
     cargo
+    cairo
     kdePackages.extra-cmake-modules
     pkg-config
   ];
