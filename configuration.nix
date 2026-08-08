@@ -36,12 +36,13 @@
   services.displayManager.sddm = {
     enable = true;
     theme = "breeze";
-    settings = {
-      Theme = {
-        Background = "/etc/nixos/wallpapers/tgla_wall1.png";
-      };
-    };
   };
+
+  environment.etc."sddm/themes/breeze/theme.conf.user".text = ''
+  [General]
+  background=${./wallpapers/tgla_wall1.png}
+'';
+
 
   # VAGY a régi szintaxis (ha régebbi NixOS csatornán vagy):
   # (nerdfonts.override { fonts = [ "FiraCode" ]; })
