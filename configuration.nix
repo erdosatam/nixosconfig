@@ -82,7 +82,9 @@
 
   # Rendszer szintű alap csomagok
   environment.systemPackages = with pkgs; [
-	 kdePackages.breeze-gtk  
+	 kdePackages.breeze-gtk 
+	 materia-kde-theme
+	 materia-theme
   ];
 
   # Rendszer verzió (ne módosítsd telepítés után)
