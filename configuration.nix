@@ -33,26 +33,21 @@
   nerd-fonts.fira-code
   ];
 
-  services.displayManager.sddm = {
-    enable = true;
-    theme = "breeze";
-  };
-
-  environment.etc."sddm/themes/breeze/theme.conf.user".text = ''
-  [General]
-  background=${./wallpapers/tgla_wall1.png}
-'';
-
-
   # VAGY a régi szintaxis (ha régebbi NixOS csatornán vagy):
   # (nerdfonts.override { fonts = [ "FiraCode" ]; })
   # Időzóna és Nyelv
   time.timeZone = "Europe/Budapest";
   i18n.defaultLocale = "hu_HU.UTF-8";
 
-  # Display Manager és KDE Plasma Desktop
-#  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  # Niri Wayland session with greetd
+  programs.niri.enable = true;
+  services.greetd = {
+    enable = true;
+    settings.default_session = {
+      command = "${pkgs.tuigreet}/bin/tuigreet --cmd niri-session";
+      user = "greeter";
+    };
+  };
 
   # Billentyűzet kiosztás
   services.xserver.xkb = {
@@ -82,9 +77,7 @@
 
   # Rendszer szintű alap csomagok
   environment.systemPackages = with pkgs; [
-	 kdePackages.breeze-gtk 
-	 materia-kde-theme
-	 materia-theme
+    ashell
   ];
 
   # Rendszer verzió (ne módosítsd telepítés után)

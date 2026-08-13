@@ -64,7 +64,6 @@
     unzip
     cargo
     cairo
-    kdePackages.extra-cmake-modules
     python3Packages.pycairo
     pkg-config
   ];
