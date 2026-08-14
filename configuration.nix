@@ -75,15 +75,13 @@
   time.timeZone = "Europe/Budapest";
   i18n.defaultLocale = "en_US.UTF-8";
 
-  # Niri Wayland session with greetd
+  # Niri Wayland session with GDM
   programs.niri.enable = true;
   programs.xwayland.enable = true;
-  services.greetd = {
+  services.xserver.enable = true;
+  services.displayManager.gdm = {
     enable = true;
-    settings.default_session = {
-      command = "${pkgs.tuigreet}/bin/tuigreet --cmd niri-session";
-      user = "greeter";
-    };
+    wayland = true;
   };
 
   # Billentyűzet kiosztás
