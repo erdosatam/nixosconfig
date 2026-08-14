@@ -100,6 +100,8 @@
     waypaper
     awww
     swaylock
+    adwaita-icon-theme # Standard GNOME fallback
+    bibata-cursors
     upower
     pavucontrol
     fuzzel
