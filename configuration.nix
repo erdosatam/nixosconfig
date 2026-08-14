@@ -95,8 +95,7 @@
   # Rendszer szintű alap csomagok
   environment.systemPackages = with pkgs; [
     networkmanagerapplet
-    waybar
-    pulseaudio
+    ironbar
     pavucontrol
     fuzzel
     xwayland-satellite
