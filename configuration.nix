@@ -30,6 +30,8 @@
     QT_QPA_PLATFORM = "wayland";
     GDK_BACKEND = "wayland,x11";
     ELECTRON_OZONE_PLATFORM_HINT = "auto";
+    XCURSOR_THEME = "Bibata-Modern-Classic";
+    XCURSOR_SIZE = "24";
   };
   fonts.packages = with pkgs; [
   # Új, moduláris szintaxis (NixOS 24.05+)
@@ -99,6 +101,7 @@
     ironbar
     waypaper
     awww
+    lxappearance
     swaylock
     adwaita-icon-theme # Standard GNOME fallback
     bibata-cursors

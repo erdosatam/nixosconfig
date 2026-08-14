@@ -39,6 +39,7 @@
     podman
     podman-compose
     distrobox
+    direnv
     git
     glib
     glib.dev
