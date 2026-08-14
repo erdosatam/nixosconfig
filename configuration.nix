@@ -96,6 +96,7 @@
   environment.systemPackages = with pkgs; [
     networkmanagerapplet
     ironbar
+    waypaper
     pavucontrol
     fuzzel
     xwayland-satellite
