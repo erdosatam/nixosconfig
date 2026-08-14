@@ -75,14 +75,11 @@
   time.timeZone = "Europe/Budapest";
   i18n.defaultLocale = "en_US.UTF-8";
 
-  # Niri Wayland session with GDM
+  # Niri Wayland session with SDDM
   programs.niri.enable = true;
   programs.xwayland.enable = true;
   services.xserver.enable = true;
-  services.displayManager.gdm = {
-    enable = true;
-    wayland = true;
-  };
+  services.displayManager.sddm.enable = true;
 
   # Billentyűzet kiosztás
   services.xserver.xkb = {
