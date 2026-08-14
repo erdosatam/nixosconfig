@@ -92,6 +92,7 @@
     shell = pkgs.fish;
   };
 
+  services.upower.enable = true;
   # Rendszer szintű alap csomagok
   environment.systemPackages = with pkgs; [
     networkmanagerapplet
