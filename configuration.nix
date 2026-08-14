@@ -53,7 +53,7 @@
   # (nerdfonts.override { fonts = [ "FiraCode" ]; })
   # Időzóna és Nyelv
   time.timeZone = "Europe/Budapest";
-  i18n.defaultLocale = "hu_HU.UTF-8";
+  i18n.defaultLocale = "en_US.UTF-8";
 
   # Niri Wayland session with greetd
   programs.niri.enable = true;
