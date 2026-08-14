@@ -36,6 +36,19 @@
   nerd-fonts.fira-code
   ];
 
+  # /etc/nixos/configuration.nix
+  services.dbus = {
+    enable = true;
+    implementation = "broker";
+  };
+
+  # Portálok és GTK támogatás biztosítása az ikonok átadásához
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    config.common.default = "*";
+  };
+
   # VAGY a régi szintaxis (ha régebbi NixOS csatornán vagy):
   # (nerdfonts.override { fonts = [ "FiraCode" ]; })
   # Időzóna és Nyelv
