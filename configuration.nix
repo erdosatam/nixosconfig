@@ -98,6 +98,7 @@
     ironbar
     waypaper
     awww
+    upower
     pavucontrol
     fuzzel
     xwayland-satellite
