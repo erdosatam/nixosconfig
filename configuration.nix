@@ -83,7 +83,7 @@
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd 'dbus-run-session -- ${pkgs.niri}/bin/niri'";
+        command = "${pkgs.greetd.regreet}/bin/regreet --time --cmd 'dbus-run-session -- ${pkgs.niri}/bin/niri'";
       };
     };
   };
