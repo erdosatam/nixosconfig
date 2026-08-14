@@ -83,6 +83,7 @@
   environment.systemPackages = with pkgs; [
     ashell
     fuzzel
+    xwayland-satellite
   ];
 
   # Rendszer verzió (ne módosítsd telepítés után)
