@@ -27,6 +27,9 @@
   environment.sessionVariables = {
     GDK_SCALE = "0.9";
     GDK_DPI_SCALE = "0.9";
+    QT_QPA_PLATFORM = "wayland";
+    GDK_BACKEND = "wayland,x11";
+    ELECTRON_OZONE_PLATFORM_HINT = "auto";
   };
   fonts.packages = with pkgs; [
   # Új, moduláris szintaxis (NixOS 24.05+)
@@ -41,6 +44,7 @@
 
   # Niri Wayland session with greetd
   programs.niri.enable = true;
+  programs.xwayland.enable = true;
   services.greetd = {
     enable = true;
     settings.default_session = {
