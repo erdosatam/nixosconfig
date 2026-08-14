@@ -30,9 +30,23 @@
     QT_QPA_PLATFORM = "wayland";
     GDK_BACKEND = "wayland,x11";
     ELECTRON_OZONE_PLATFORM_HINT = "auto";
-    XCURSOR_THEME = "Bibata-Modern-Classic";
-    XCURSOR_SIZE = "24";
+    XCURSOR_THEME = "Bibata-Original-Ice";
+    XCURSOR_SIZE = "16";
   };
+
+  environment.variables = {
+    XCURSOR_THEME = "Bibata-Original-Ice";
+    XCURSOR_SIZE = "16";
+  };
+
+  gtk = {
+    enable = true;
+    cursorTheme = {
+      name = "Bibata-Original-Ice";
+      package = pkgs.bibata-cursors;
+    };
+  };
+
   fonts.packages = with pkgs; [
   # Új, moduláris szintaxis (NixOS 24.05+)
   nerd-fonts.fira-code
@@ -104,7 +118,6 @@
     lxappearance
     swaylock
     adwaita-icon-theme # Standard GNOME fallback
-    bibata-cursors
     upower
     pavucontrol
     fuzzel
