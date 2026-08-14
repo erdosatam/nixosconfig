@@ -94,7 +94,7 @@
 
   # Rendszer szintű alap csomagok
   environment.systemPackages = with pkgs; [
-    ashell
+    ags
     fuzzel
     xwayland-satellite
   ];
