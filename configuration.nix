@@ -39,13 +39,17 @@
     XCURSOR_SIZE = "16";
   };
 
-  gtk = {
-    enable = true;
-    cursorTheme = {
-      name = "Bibata-Original-Ice";
-      package = pkgs.bibata-cursors;
-    };
-  };
+  environment.etc."gtk-3.0/settings.ini".text = ''
+    [Settings]
+    gtk-cursor-theme-name = Bibata-Original-Ice
+    gtk-cursor-theme-size = 16
+  '';
+
+  environment.etc."gtk-4.0/settings.ini".text = ''
+    [Settings]
+    gtk-cursor-theme-name = Bibata-Original-Ice
+    gtk-cursor-theme-size = 16
+  '';
 
   fonts.packages = with pkgs; [
   # Új, moduláris szintaxis (NixOS 24.05+)
@@ -117,7 +121,8 @@
     awww
     lxappearance
     swaylock
-    adwaita-icon-theme # Standard GNOME fallback
+    adwaita-icon-theme 
+    bibata-cursors
     upower
     pavucontrol
     fuzzel
