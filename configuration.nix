@@ -97,7 +97,7 @@
     networkmanagerapplet
     ironbar
     waypaper
-    awwww
+    awww
     pavucontrol
     fuzzel
     xwayland-satellite
