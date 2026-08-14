@@ -75,11 +75,19 @@
   time.timeZone = "Europe/Budapest";
   i18n.defaultLocale = "en_US.UTF-8";
 
-  # Niri Wayland session with SDDM
+  # Niri Wayland session with greetd
   programs.niri.enable = true;
   programs.xwayland.enable = true;
   services.xserver.enable = true;
-  services.displayManager.sddm.enable = true;
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd 'dbus-run-session -- ${pkgs.niri}/bin/niri'";
+      };
+    };
+  };
+  security.pam.services.greetd.enable = true;
 
   # Billentyűzet kiosztás
   services.xserver.xkb = {
