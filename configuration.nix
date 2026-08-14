@@ -78,6 +78,7 @@
   # Rendszer szintű alap csomagok
   environment.systemPackages = with pkgs; [
     ashell
+    fuzzel
   ];
 
   # Rendszer verzió (ne módosítsd telepítés után)
