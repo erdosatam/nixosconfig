@@ -97,6 +97,7 @@
     networkmanagerapplet
     waybar
     pulseaudio
+    pavucontrol
     fuzzel
     xwayland-satellite
   ];
