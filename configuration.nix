@@ -96,6 +96,7 @@
   environment.systemPackages = with pkgs; [
     networkmanagerapplet
     waybar
+    pulseaudio
     fuzzel
     xwayland-satellite
   ];
