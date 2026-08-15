@@ -79,9 +79,26 @@
   # The Pantheon module manages its own greeter; LightDM is enabled as the display manager.
   services.xserver.enable = true;
   programs.xwayland.enable = true;
-  services.desktopManager.pantheon.enable = true;
-  services.xserver.displayManager.lightdm.enable = true;
-  services.displayManager.defaultSession = "pantheon";
+  services.xserver = {
+    enable = true;
+
+    # Billentyűzet kiosztás beállítása (pl. magyar)
+    xkb = {
+      layout = "hu";
+      variant = "";
+    };
+
+    # 2. LightDM Display Manager és a Pantheon Greeter engedélyezése
+    displayManager.lightdm = {
+      enable = true;
+      greeters.pantheon.enable = true;
+    };
+
+    # 3. Pantheon Desktop Environment engedélyezése
+    desktopManager.pantheon.enable = true;
+  };
+
+  services.pantheon.apps.enable = true; # Gyári Pantheon alkalmazások (Files, Terminal, AppCenter, stb.)
 
   # Billentyűzet kiosztás
   services.xserver.xkb = {
