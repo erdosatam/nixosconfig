@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, ... }:
 
 {
   imports = [
@@ -75,21 +75,12 @@
   time.timeZone = "Europe/Budapest";
   i18n.defaultLocale = "en_US.UTF-8";
 
-  # Pantheon desktop + LightDM with Pantheon/elementary theming
+  # Pantheon desktop + LightDM
   services.xserver.enable = true;
   programs.xwayland.enable = true;
-  services.xserver.desktopManager.pantheon.enable = true;
+  services.desktopManager.pantheon.enable = true;
   services.xserver.displayManager.lightdm.enable = true;
-  services.displayManager.defaultSession = "pantheon-wayland";
-  services.xserver.displayManager.lightdm.greeters.gtk = {
-    enable = lib.mkForce true;
-    theme.name = "io.elementary.stylesheet.dark";
-    theme.package = pkgs.elementary-default-settings;
-    iconTheme.name = "elementary";
-    iconTheme.package = pkgs.pantheon.elementary-icon-theme;
-    cursorTheme.name = "Bibata-Original-Ice";
-    cursorTheme.package = pkgs.bibata-cursors;
-  };
+  services.displayManager.defaultSession = "pantheon";
 
   # Billentyűzet kiosztás
   services.xserver.xkb = {
