@@ -8,6 +8,14 @@
     defaultNetwork.settings.dns_enabled = true;
   };
 
+  virtualisation.containers.containersConf.settings = {
+    engine = {
+      cgroup_manager = "cgroupfs";
+      # Ha a crun továbbra is hibát adna, átválthatsz runc-ra is:
+     # runtime = "runc";
+  };
+  };
+
   virtualisation.containers = {
     enable = true;
 
@@ -39,6 +47,7 @@
     podman
     podman-compose
     distrobox
+    direnv
     git
     glib
     glib.dev
@@ -64,7 +73,6 @@
     unzip
     cargo
     cairo
-    kdePackages.extra-cmake-modules
     python3Packages.pycairo
     pkg-config
   ];

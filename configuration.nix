@@ -27,38 +27,68 @@
   environment.sessionVariables = {
     GDK_SCALE = "0.9";
     GDK_DPI_SCALE = "0.9";
+    QT_QPA_PLATFORM = "wayland";
+    GDK_BACKEND = "wayland,x11";
+    ELECTRON_OZONE_PLATFORM_HINT = "auto";
+    XCURSOR_THEME = "Bibata-Original-Ice";
+    XCURSOR_SIZE = "16";
   };
+
+  environment.variables = {
+    XCURSOR_THEME = "Bibata-Original-Ice";
+    XCURSOR_SIZE = "16";
+  };
+
+  environment.etc."gtk-3.0/settings.ini".text = ''
+    [Settings]
+    gtk-cursor-theme-name = Bibata-Original-Ice
+    gtk-cursor-theme-size = 16
+  '';
+
+  environment.etc."gtk-4.0/settings.ini".text = ''
+    [Settings]
+    gtk-cursor-theme-name = Bibata-Original-Ice
+    gtk-cursor-theme-size = 16
+  '';
+
   fonts.packages = with pkgs; [
   # Új, moduláris szintaxis (NixOS 24.05+)
   nerd-fonts.fira-code
   ];
 
-  services.displayManager.sddm = {
+  # /etc/nixos/configuration.nix
+  services.dbus = {
     enable = true;
-    theme = "breeze";
+    implementation = "broker";
   };
 
-  environment.etc."sddm/themes/breeze/theme.conf.user".text = ''
-  [General]
-  background=${./wallpapers/tgla_wall1.png}
-'';
-
+  # Portálok és GTK támogatás biztosítása az ikonok átadásához
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    config.common.default = "*";
+  };
 
   # VAGY a régi szintaxis (ha régebbi NixOS csatornán vagy):
   # (nerdfonts.override { fonts = [ "FiraCode" ]; })
   # Időzóna és Nyelv
   time.timeZone = "Europe/Budapest";
-  i18n.defaultLocale = "hu_HU.UTF-8";
+  i18n.defaultLocale = "en_US.UTF-8";
 
-  # Display Manager és KDE Plasma Desktop
-#  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  # Pantheon + LightDM: keep a single, non-conflicting login-manager setup.
+  services.xserver.enable = true;
+  programs.xwayland.enable = true;
 
   # Billentyűzet kiosztás
   services.xserver.xkb = {
     layout = "hu";
     variant = "";
   };
+
+  # LightDM és Pantheon
+  services.xserver.displayManager.lightdm.enable = true;
+  services.displayManager.defaultSession = "pantheon-wayland";
+  services.desktopManager.pantheon.enable = true;
 
   # Fish shell engedélyezése rendszer szinten
   programs.fish.enable = true;
@@ -80,11 +110,20 @@
     shell = pkgs.fish;
   };
 
+  services.upower.enable = true;
   # Rendszer szintű alap csomagok
   environment.systemPackages = with pkgs; [
-	 kdePackages.breeze-gtk 
-	 materia-kde-theme
-	 materia-theme
+    networkmanagerapplet
+    waypaper
+    awww
+    pantheon-tweaks
+    swaylock
+    adwaita-icon-theme 
+    bibata-cursors
+    upower
+    pavucontrol
+    fuzzel
+    xwayland-satellite
   ];
 
   # Rendszer verzió (ne módosítsd telepítés után)

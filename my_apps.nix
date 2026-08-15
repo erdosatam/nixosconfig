@@ -2,9 +2,16 @@
 
 {
 
+fonts = {
+  fontconfig = {
+    enable = true;
+  };
+};
+
 # Flatpak engedélyezése
   services.flatpak.enable = true;
 
+  fonts.fontDir.enable = true;
   # XDG Desktop Portal engedélyezése (szükséges az ablakintegrációhoz és fájlkezelőkhöz)
   environment.systemPackages = with pkgs; [
     # Ide írhatod a saját mindennapi alkalmazásaidat
@@ -13,7 +20,11 @@
 	neovim
 	flatpak
 	flatpak-xdg-utils
-	mc
+  thunar
+  thunar-volman
+  thunar-vcs-plugin
+  thunar-archive-plugin  
+  mc
 	webkitgtk_4_1
 	gst_all_1.gst-plugins-base
         gst_all_1.gst-plugins-good     # Open-source, high-quality plugins
