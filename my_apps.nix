@@ -20,10 +20,7 @@ fonts = {
 	neovim
 	flatpak
 	flatpak-xdg-utils
-  thunar
-  thunar-volman
-  thunar-vcs-plugin
-  thunar-archive-plugin  
+  lazygit
   mc
 	webkitgtk_4_1
 	gst_all_1.gst-plugins-base
