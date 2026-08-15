@@ -81,11 +81,15 @@
   services.xserver.desktopManager.pantheon.enable = true;
   services.displayManager.defaultSession = "pantheon-wayland";
 
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
-    theme = "breeze";
-  };
+   services.xserver = {
+      enable = true;
+      displayManager.lightdm = {
+          enable = true;
+          greeters.pantheon.enable = true;
+        };
+
+        displayManager.pantheon.enable = true;
+    }
 
   # Billentyűzet kiosztás
   services.xserver.xkb = {
