@@ -75,21 +75,21 @@
   time.timeZone = "Europe/Budapest";
   i18n.defaultLocale = "en_US.UTF-8";
 
-  # Pantheon desktop + Wayland-first login manager
+  # Pantheon desktop + LightDM with Pantheon/elementary theming
   services.xserver.enable = true;
   programs.xwayland.enable = true;
   services.xserver.desktopManager.pantheon.enable = true;
+  services.xserver.displayManager.lightdm.enable = true;
   services.displayManager.defaultSession = "pantheon-wayland";
-
-   services.xserver = {
-      enable = true;
-      displayManager.lightdm = {
-          enable = true;
-          greeters.pantheon.enable = true;
-        };
-
-        displayManager.pantheon.enable = true;
-    }
+  services.xserver.displayManager.lightdm.greeters.gtk = {
+    enable = true;
+    theme.name = "io.elementary.stylesheet.dark";
+    theme.package = pkgs.elementary-default-settings;
+    iconTheme.name = "elementary";
+    iconTheme.package = pkgs.elementary-icon-theme;
+    cursorTheme.name = "Bibata-Original-Ice";
+    cursorTheme.package = pkgs.bibata-cursors;
+  };
 
   # Billentyűzet kiosztás
   services.xserver.xkb = {
