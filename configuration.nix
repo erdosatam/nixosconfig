@@ -75,19 +75,17 @@
   time.timeZone = "Europe/Budapest";
   i18n.defaultLocale = "en_US.UTF-8";
 
-  # Niri Wayland session with greetd
-  programs.niri.enable = true;
-  programs.xwayland.enable = true;
+  # Pantheon desktop + Wayland-first login manager
   services.xserver.enable = true;
-  services.greetd = {
+  programs.xwayland.enable = true;
+  services.xserver.desktopManager.pantheon.enable = true;
+  services.displayManager.defaultSession = "pantheon";
+
+  services.displayManager.sddm = {
     enable = true;
-    settings = {
-      default_session = {
-        command = "${pkgs.greetd.regreet}/bin/regreet --time --cmd 'dbus-run-session -- ${pkgs.niri}/bin/niri'";
-      };
-    };
+    wayland.enable = true;
+    theme = "breeze";
   };
-  security.pam.services.greetd.enable = true;
 
   # Billentyűzet kiosztás
   services.xserver.xkb = {
