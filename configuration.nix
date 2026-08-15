@@ -80,7 +80,7 @@
   programs.xwayland.enable = true;
   services.desktopManager.pantheon.enable = true;
   services.xserver.displayManager.lightdm.enable = true;
-  services.displayManager.defaultSession = "pantheon";
+  services.displayManager.defaultSession = "pantheon-wayland";
 
   # Billentyűzet kiosztás
   services.xserver.xkb = {
