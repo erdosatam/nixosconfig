@@ -7,6 +7,11 @@
     linux-firmware
   ];
 
+  programs.corectrl = {
+    enable = true;
+    gpu.applyProfileProfileMode = true;
+  };
+
   # GPU / Mesa / Vulkan beállítások
   hardware.graphics = {
     enable = true;
