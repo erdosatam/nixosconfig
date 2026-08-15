@@ -75,12 +75,13 @@
   time.timeZone = "Europe/Budapest";
   i18n.defaultLocale = "en_US.UTF-8";
 
-  # Pantheon desktop + LightDM
+  # Pantheon + LightDM: keep a single, non-conflicting login-manager setup.
+  # The Pantheon module manages its own greeter; LightDM is enabled as the display manager.
   services.xserver.enable = true;
   programs.xwayland.enable = true;
   services.desktopManager.pantheon.enable = true;
   services.xserver.displayManager.lightdm.enable = true;
-  services.displayManager.defaultSession = "pantheon-wayland";
+  services.displayManager.defaultSession = "pantheon";
 
   # Billentyűzet kiosztás
   services.xserver.xkb = {
