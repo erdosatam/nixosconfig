@@ -79,7 +79,7 @@
   services.xserver.enable = true;
   programs.xwayland.enable = true;
   services.xserver.desktopManager.pantheon.enable = true;
-  services.displayManager.defaultSession = "pantheon";
+  services.displayManager.defaultSession = "pantheon-wayland";
 
   services.displayManager.sddm = {
     enable = true;
