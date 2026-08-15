@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports = [
@@ -82,7 +82,7 @@
   services.xserver.displayManager.lightdm.enable = true;
   services.displayManager.defaultSession = "pantheon-wayland";
   services.xserver.displayManager.lightdm.greeters.gtk = {
-    enable = true;
+    enable = lib.mkForce true;
     theme.name = "io.elementary.stylesheet.dark";
     theme.package = pkgs.elementary-default-settings;
     iconTheme.name = "elementary";
