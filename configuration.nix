@@ -65,7 +65,7 @@
   # Portálok és GTK támogatás biztosítása az ikonok átadásához
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    extraPortals = [ pkgs.xdg-desktop-portal-pantheon pkgs.xdg-desktop-portal-gtk ];
     config.common.default = "*";
   };
 
