@@ -86,7 +86,7 @@
     theme.name = "io.elementary.stylesheet.dark";
     theme.package = pkgs.elementary-default-settings;
     iconTheme.name = "elementary";
-    iconTheme.package = pkgs.elementary-icon-theme;
+    iconTheme.package = pkgs.pantheon.elementary-icon-theme;
     cursorTheme.name = "Bibata-Original-Ice";
     cursorTheme.package = pkgs.bibata-cursors;
   };
