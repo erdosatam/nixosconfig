@@ -9,8 +9,9 @@
 
   programs.corectrl = {
     enable = true;
-    gpu.applyProfileProfileMode = true;
   };
+
+  hardware.amdgpu.overdrive.enable = true;
 
   # GPU / Mesa / Vulkan beállítások
   hardware.graphics = {
