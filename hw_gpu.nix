@@ -30,7 +30,6 @@
       vulkan-tools
       vulkan-loader
       dxvk
-      dxvk_1
     ];
     extraPackages32 = with pkgs; [
       pkgsi686Linux.libvdpau-va-gl
