@@ -106,6 +106,7 @@
       "pipewire"
       "podman"
       "docker"
+      "gamemode"
     ];
     shell = pkgs.fish;
   };
