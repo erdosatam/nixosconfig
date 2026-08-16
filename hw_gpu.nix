@@ -21,12 +21,16 @@
       libvdpau-va-gl
       libva-vdpau-driver
       mesa
+      mesa_i686
+      mesa_glu
       vulkan-validation-layers
       vulkan-extension-layer
       vkd3d
+      vkdt
       vulkan-tools
       vulkan-loader
       dxvk
+      dxvk_1
     ];
     extraPackages32 = with pkgs; [
       pkgsi686Linux.libvdpau-va-gl
