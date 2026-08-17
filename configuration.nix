@@ -123,7 +123,7 @@
     bibata-cursors
     upower
     pavucontrol
-    fuzzel
+    albert
     xwayland-satellite
   ];
 
