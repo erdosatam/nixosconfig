@@ -124,7 +124,7 @@
     upower
     pavucontrol
     wofi
-    wingpanel-indicator-namarupa
+    wingpanel-indicator-namarupa # Ha elérhető a felhasznált nixpkgs csatornádban
     xwayland-satellite
   ];
 
