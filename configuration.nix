@@ -110,7 +110,6 @@
     ];
     shell = pkgs.fish;
   };
-
   services.upower.enable = true;
   # Rendszer szintű alap csomagok
   environment.systemPackages = with pkgs; [
@@ -124,7 +123,6 @@
     upower
     pavucontrol
     wofi
-    wingpanel-indicator-namarupa # Ha elérhető a felhasznált nixpkgs csatornádban
     xwayland-satellite
   ];
 
