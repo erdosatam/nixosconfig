@@ -124,6 +124,7 @@
     upower
     pavucontrol
     wofi
+    wingpanel-indicator-namarupa
     xwayland-satellite
   ];
 
