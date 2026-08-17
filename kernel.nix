@@ -13,6 +13,7 @@
     "amdgpu.audio=0"
     "preempt=full"
     "mitigations=off"
+    "amdgpu.ppfeaturemask=0xffffffff"
     "threadirqs"
   ];
 
