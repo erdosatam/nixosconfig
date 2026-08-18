@@ -110,6 +110,9 @@
     ];
     shell = pkgs.fish;
   };
+
+  services.accounts-daemon.enable = true;
+
   services.upower.enable = true;
   # Rendszer szintű alap csomagok
   environment.systemPackages = with pkgs; [
