@@ -111,6 +111,13 @@
     shell = pkgs.fish;
   };
 
+  services.gvfs = {
+    enable = true;
+    package = pkgs.gnome.gvfs;
+  };
+
+  # FUSE támogatás a felhasználói csatolásokhoz
+  programs.fuse.userAllowOther = true;
   services.accounts-daemon.enable = true;
 
   services.upower.enable = true;
@@ -127,6 +134,8 @@
     pavucontrol
     wofi
     xwayland-satellite
+    libmtp
+    mtpfs
   ];
 
   # Rendszer verzió (ne módosítsd telepítés után)
