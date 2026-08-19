@@ -2,7 +2,7 @@
 
 {
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.pkgs.linuxPackages_zen;
 
 
   # Kernel paraméterek
@@ -13,6 +13,7 @@
     "amdgpu.audio=0"
     "preempt=full"
     "mitigations=off"
+    "amdgpu.ppfeaturemask=0xffffffff"
     "threadirqs"
   ];
 

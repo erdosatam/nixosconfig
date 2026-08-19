@@ -65,7 +65,7 @@
   # Portálok és GTK támogatás biztosítása az ikonok átadásához
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.pantheon.xdg-desktop-portal-pantheon ];
     config.common.default = "*";
   };
 
@@ -106,9 +106,19 @@
       "pipewire"
       "podman"
       "docker"
+      "gamemode"
     ];
     shell = pkgs.fish;
   };
+
+  services.gvfs = {
+    enable = true;
+    package = pkgs.gnome.gvfs;
+  };
+
+  # FUSE támogatás a felhasználói csatolásokhoz
+  programs.fuse.userAllowOther = true;
+  services.accounts-daemon.enable = true;
 
   services.upower.enable = true;
   # Rendszer szintű alap csomagok
@@ -122,8 +132,10 @@
     bibata-cursors
     upower
     pavucontrol
-    fuzzel
+    wofi
     xwayland-satellite
+    libmtp
+    mtpfs
   ];
 
   # Rendszer verzió (ne módosítsd telepítés után)
