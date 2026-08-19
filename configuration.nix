@@ -65,7 +65,7 @@
   # Portálok és GTK támogatás biztosítása az ikonok átadásához
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.pantheon.xdg-desktop-portal-pantheon ];
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-gnome ];
     config.common.default = "*";
   };
 
@@ -75,7 +75,7 @@
   time.timeZone = "Europe/Budapest";
   i18n.defaultLocale = "en_US.UTF-8";
 
-  # Pantheon + LightDM: keep a single, non-conflicting login-manager setup.
+  # GNOME + GDM: use the upstream GNOME session and display manager.
   services.xserver.enable = true;
   programs.xwayland.enable = true;
 
@@ -85,10 +85,9 @@
     variant = "";
   };
 
-  # LightDM és Pantheon
-  services.xserver.displayManager.lightdm.enable = true;
-  services.displayManager.defaultSession = "pantheon-wayland";
-  services.desktopManager.pantheon.enable = true;
+  services.displayManager.gdm.enable = true;
+  services.displayManager.defaultSession = "gnome";
+  services.desktopManager.gnome.enable = true;
 
   # Fish shell engedélyezése rendszer szinten
   programs.fish.enable = true;
@@ -123,16 +122,10 @@
   services.upower.enable = true;
   # Rendszer szintű alap csomagok
   environment.systemPackages = with pkgs; [
-    networkmanagerapplet
-    waypaper
-    awww
-    pantheon-tweaks
-    swaylock
+    gnome-tweaks
     adwaita-icon-theme 
     bibata-cursors
     upower
-    pavucontrol
-    wofi
     xwayland-satellite
     libmtp
     mtpfs
