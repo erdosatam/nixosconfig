@@ -118,7 +118,8 @@
   # FUSE támogatás a felhasználói csatolásokhoz
   programs.fuse.userAllowOther = true;
   services.accounts-daemon.enable = true;
-
+  services.tumbler.enable = true;    # Alternative/supplemental thumbnail generation
+  hardware.sane.enable = true;       #
   services.upower.enable = true;
   # Rendszer szintű alap csomagok
   environment.systemPackages = with pkgs; [
