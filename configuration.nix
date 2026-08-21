@@ -23,6 +23,7 @@
   # Hálózat
   networking.hostName = "lenovo-ideapad";
   networking.networkmanager.enable = true;
+  programs.nm-applet.enable = false;
 
   environment.sessionVariables = {
     GDK_SCALE = "0.9";
@@ -65,7 +66,7 @@
   # Portálok és GTK támogatás biztosítása az ikonok átadásához
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-gnome ];
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-cosmic ];
     config.common.default = "*";
   };
 
@@ -75,7 +76,7 @@
   time.timeZone = "Europe/Budapest";
   i18n.defaultLocale = "en_US.UTF-8";
 
-  # GNOME + GDM: use the upstream GNOME session and display manager.
+  # Cosmic desktop configuration.
   services.xserver.enable = true;
   programs.xwayland.enable = true;
 
@@ -84,10 +85,13 @@
     layout = "hu";
     variant = "";
   };
-
-  services.displayManager.gdm.enable = true;
-  services.displayManager.defaultSession = "gnome";
-  services.desktopManager.gnome.enable = true;
+# Enable the native COSMIC login manager (disables/bypasses LightDM, GDM, SDDM)
+  services.displayManager.cosmic-greeter.enable = true;
+ 
+  # Ensure LightDM and xserver display managers are turned off (if previously set)
+  services.xserver.displayManager.lightdm.enable = false;
+  services.displayManager.defaultSession = "cosmic";
+  services.desktopManager.cosmic.enable = true;
 
   # Fish shell engedélyezése rendszer szinten
   programs.fish.enable = true;
@@ -114,7 +118,6 @@
     enable = true;
     package = pkgs.gnome.gvfs;
   };
-
   # FUSE támogatás a felhasználói csatolásokhoz
   programs.fuse.userAllowOther = true;
   services.accounts-daemon.enable = true;
@@ -123,7 +126,6 @@
   services.upower.enable = true;
   # Rendszer szintű alap csomagok
   environment.systemPackages = with pkgs; [
-    gnome-tweaks
     adwaita-icon-theme 
     bibata-cursors
     upower

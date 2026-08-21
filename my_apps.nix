@@ -18,6 +18,8 @@ fonts = {
     # Pl.: firefox, neovim, vlc, mpv, stb.
    	vim
 	neovim
+  ripgrep
+  fzf
 	flatpak
 	flatpak-xdg-utils
   lazygit
