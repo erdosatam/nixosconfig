@@ -126,7 +126,8 @@
   services.upower.enable = true;
   # Rendszer szintű alap csomagok
   environment.systemPackages = with pkgs; [
-    adwaita-icon-theme 
+    adwaita-icon-theme
+    pop-gtk-theme
     bibata-cursors
     upower
     xwayland-satellite
