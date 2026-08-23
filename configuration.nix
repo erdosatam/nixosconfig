@@ -158,6 +158,8 @@
     waybar
     mako
     fuzzel
+    networkmanagerapplet
+    networkmanager_dmenu
     wofi
     mako
     grim
