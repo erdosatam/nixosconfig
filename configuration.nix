@@ -81,58 +81,13 @@
   time.timeZone = "Europe/Budapest";
   i18n.defaultLocale = "en_US.UTF-8";
 
-  # Wayland / swayfx session configuration with greetd.
-  services.xserver.enable = false;
+  # Cosmic desktop session and login manager.
+  services.xserver.enable = true;
   programs.xwayland.enable = true;
 
-  programs.sway = {
-    enable = true;
-    package = pkgs.swayfx;
-    wrapperFeatures.gtk = true;
-  };
-
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd ${lib.escapeShellArg "${pkgs.swayfx}/bin/sway --unsupported-gpu"}";
-        user = "greeter";
-      };
-    };
-  };
-
-  security.pam.services.greetd.enable = true;
-
-  security.polkit.extraConfig = ''
-    polkit.addRule(function(action, subject) {
-      if (action.id.indexOf("org.freedesktop.flatpak.") === 0 &&
-          subject.isInGroup("wheel")) {
-        return polkit.Result.YES;
-      }
-    });
-  '';
-  # 3. Automatikus Polkit Agent indítás Systemd User Service-ként
-  systemd.user.services.polkit-gnome-authentication-agent-1 = {
-    description = "polkit-gnome-authentication-agent-1";
-    wantedBy = [ "graphical-session.target" ];
-    wants = [ "graphical-session.target" ];
-    after = [ "graphical-session.target" ];
-    serviceConfig = {
-      Type = "simple";
-      ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-      Restart = "on-failure";
-      RestartSec = 1;
-      TimeoutStopSec = 10;
-    };
-  };
-  
-  users.users.greeter = {
-    group = "greeter";
-    linger = false;
-    isSystemUser = true;
-  };
-
-  users.groups.greeter = {};
+  services.desktopManager.cosmic.enable = true;
+  services.displayManager.cosmic-greeter.enable = true;
+  services.displayManager.defaultSession = "cosmic";
 
   # Billentyűzet kiosztás
   services.xserver.xkb = {
@@ -177,16 +132,7 @@
     adwaita-icon-theme
     pop-gtk-theme
     bibata-cursors
-    swayfx
-    swaybg
-    swaylock
-    waybar
-    mako
-    fuzzel
-    networkmanagerapplet
-    networkmanager_dmenu
     wofi
-    mako
     grim
     slurp
     wl-clipboard
