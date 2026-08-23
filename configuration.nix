@@ -32,7 +32,6 @@
     GDK_BACKEND = "wayland,x11";
     ELECTRON_OZONE_PLATFORM_HINT = "auto";
     NIXOS_OZONE_WL = "1";
-    XDG_CURRENT_DESKTOP = "sway";
     XDG_SESSION_TYPE = "wayland";
     XCURSOR_THEME = "Bibata-Original-Ice";
     XCURSOR_SIZE = "16";
@@ -106,17 +105,12 @@
 
   security.polkit.extraConfig = ''
     polkit.addRule(function(action, subject) {
-      if ((action.id == "org.freedesktop.flatpak.app-install" ||
-           action.id == "org.freedesktop.flatpak.app-uninstall" ||
-           action.id == "org.freedesktop.flatpak.runtime-install" ||
-           action.id == "org.freedesktop.flatpak.runtime-uninstall" ||
-           action.id == "org.freedesktop.flatpak.modify-repo") &&
+      if (action.id.indexOf("org.freedesktop.flatpak.") === 0 &&
           subject.isInGroup("wheel")) {
         return polkit.Result.YES;
       }
     });
   '';
-
   # 3. Automatikus Polkit Agent indítás Systemd User Service-ként
   systemd.user.services.polkit-gnome-authentication-agent-1 = {
     description = "polkit-gnome-authentication-agent-1";
