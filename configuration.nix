@@ -156,6 +156,8 @@
     swaybg
     swaylock
     waybar
+    mako
+    fuzzel
     wofi
     mako
     grim
