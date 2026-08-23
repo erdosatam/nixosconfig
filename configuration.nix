@@ -66,6 +66,8 @@
     implementation = "broker";
   };
 
+  security.polkit.enable = true;
+  
   # Portálok és GTK támogatás biztosítása az ikonok átadásához
   xdg.portal = {
     enable = true;
@@ -102,6 +104,35 @@
 
   security.pam.services.greetd.enable = true;
 
+  security.polkit.extraConfig = ''
+    polkit.addRule(function(action, subject) {
+      if ((action.id == "org.freedesktop.flatpak.app-install" ||
+           action.id == "org.freedesktop.flatpak.app-uninstall" ||
+           action.id == "org.freedesktop.flatpak.runtime-install" ||
+           action.id == "org.freedesktop.flatpak.runtime-uninstall" ||
+           action.id == "org.freedesktop.flatpak.modify-repo") &&
+          subject.isInGroup("wheel")) {
+        return polkit.Result.YES;
+      }
+    });
+  '';
+
+  # 3. Automatikus Polkit Agent indítás Systemd User Service-ként
+  systemd.user.services.polkit-gnome-authentication-agent-1 = {
+    description = "polkit-gnome-authentication-agent-1";
+    wantedBy = [ "graphical-session.target" ];
+    wants = [ "graphical-session.target" ];
+    after = [ "graphical-session.target" ];
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${pkgs.polkit-gnome}/libexec/polkit-gnome-authentication-agent-1";
+      Restart = "on-failure";
+      RestartSec = 1;
+      TimeoutStopSec = 10;
+    };
+  };
+  security.polkit.enable = true;
+  
   users.users.greeter = {
     group = "greeter";
     linger = false;
@@ -133,6 +164,7 @@
       "podman"
       "docker"
       "gamemode"
+      "flatpak"
     ];
     shell = pkgs.fish;
   };
