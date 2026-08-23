@@ -160,7 +160,7 @@
     fuzzel
     networkmanagerapplet
     networkmanager_dmenu
-    polkit-gnome
+    polkit_gnome
     wofi
     mako
     grim
