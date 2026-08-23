@@ -125,13 +125,12 @@
     after = [ "graphical-session.target" ];
     serviceConfig = {
       Type = "simple";
-      ExecStart = "${pkgs.polkit-gnome}/libexec/polkit-gnome-authentication-agent-1";
+      ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
       Restart = "on-failure";
       RestartSec = 1;
       TimeoutStopSec = 10;
     };
   };
-  security.polkit.enable = true;
   
   users.users.greeter = {
     group = "greeter";
@@ -192,7 +191,6 @@
     fuzzel
     networkmanagerapplet
     networkmanager_dmenu
-    polkit_gnome
     wofi
     mako
     grim
