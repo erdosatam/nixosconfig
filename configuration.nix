@@ -131,6 +131,7 @@
   environment.systemPackages = with pkgs; [
     adwaita-icon-theme
     pop-gtk-theme
+    cosmic-ext-applet-caffeine
     bibata-cursors
     wofi
     grim
