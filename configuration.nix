@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports = [
@@ -31,6 +31,9 @@
     QT_QPA_PLATFORM = "wayland";
     GDK_BACKEND = "wayland,x11";
     ELECTRON_OZONE_PLATFORM_HINT = "auto";
+    NIXOS_OZONE_WL = "1";
+    XDG_CURRENT_DESKTOP = "sway";
+    XDG_SESSION_TYPE = "wayland";
     XCURSOR_THEME = "Bibata-Original-Ice";
     XCURSOR_SIZE = "16";
   };
@@ -66,7 +69,8 @@
   # Portálok és GTK támogatás biztosítása az ikonok átadásához
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-cosmic ];
+    wlr.enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-wlr ];
     config.common.default = "*";
   };
 
@@ -76,22 +80,41 @@
   time.timeZone = "Europe/Budapest";
   i18n.defaultLocale = "en_US.UTF-8";
 
-  # Cosmic desktop configuration.
-  services.xserver.enable = true;
+  # Wayland / swayfx session configuration with greetd.
+  services.xserver.enable = false;
   programs.xwayland.enable = true;
+
+  programs.sway = {
+    enable = true;
+    package = pkgs.swayfx;
+    wrapperFeatures.gtk = true;
+  };
+
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd ${lib.escapeShellArg "${pkgs.swayfx}/bin/sway --unsupported-gpu"}";
+        user = "greeter";
+      };
+    };
+  };
+
+  security.pam.services.greetd.enable = true;
+
+  users.users.greeter = {
+    group = "greeter";
+    linger = false;
+    isSystemUser = true;
+  };
+
+  users.groups.greeter = {};
 
   # Billentyűzet kiosztás
   services.xserver.xkb = {
     layout = "hu";
     variant = "";
   };
-# Enable the native COSMIC login manager (disables/bypasses LightDM, GDM, SDDM)
-  services.displayManager.cosmic-greeter.enable = true;
- 
-  # Ensure LightDM and xserver display managers are turned off (if previously set)
-  services.xserver.displayManager.lightdm.enable = false;
-  services.displayManager.defaultSession = "cosmic";
-  services.desktopManager.cosmic.enable = true;
 
   # Fish shell engedélyezése rendszer szinten
   programs.fish.enable = true;
@@ -129,6 +152,15 @@
     adwaita-icon-theme
     pop-gtk-theme
     bibata-cursors
+    swayfx
+    swaybg
+    swaylock
+    waybar
+    wofi
+    mako
+    grim
+    slurp
+    wl-clipboard
     upower
     xwayland-satellite
     libmtp
