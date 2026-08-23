@@ -160,7 +160,6 @@
     fuzzel
     networkmanagerapplet
     networkmanager_dmenu
-    blueman
     wofi
     mako
     grim
