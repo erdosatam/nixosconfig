@@ -139,6 +139,7 @@
     wl-clipboard
     upower
     xwayland-satellite
+    cosmic-ext-tweaks
     libmtp
     mtpfs
   ];
