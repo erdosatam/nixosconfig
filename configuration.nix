@@ -140,6 +140,7 @@
     upower
     xwayland-satellite
     cosmic-ext-tweaks
+    cosmic-ext-applet-sysinfo
     libmtp
     mtpfs
   ];
