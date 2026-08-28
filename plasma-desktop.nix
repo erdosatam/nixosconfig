@@ -1,7 +1,6 @@
 { config, pkgs, lib, ... }:
 
 {
-  
   environment.variables = {
     XCURSOR_THEME = "Bibata-Original-Ice";
     XCURSOR_SIZE = "16";
@@ -33,27 +32,23 @@
   xdg.portal = {
     enable = true;
     wlr.enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-wlr ];
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.kdePackages.xdg-desktop-portal-kde ];
     config.common.default = "*";
   };
 
   services.xserver.enable = true;
   programs.xwayland.enable = true;
 
-  services.desktopManager.cosmic.enable = true;
-  services.displayManager.cosmic-greeter.enable = true;
-  services.displayManager.defaultSession = "cosmic";
+  services.desktopManager.plasma6.enable = true;
+  services.displayManager.sddm.enable = true;
+  services.displayManager.defaultSession = "plasma";
 
   services.xserver.xkb = {
     layout = "hu";
     variant = "";
   };
 
-  services.gvfs = {
-    enable = true;
-    package = pkgs.gnome.gvfs;
-  };
-
+  services.gvfs.enable = true;
   programs.fuse.userAllowOther = true;
   services.accounts-daemon.enable = true;
   services.tumbler.enable = true;
@@ -61,9 +56,9 @@
   services.upower.enable = true;
 
   environment.systemPackages = with pkgs; [
-    cosmic-ext-applet-caffeine
-    cosmic-ext-tweaks
-    cosmic-ext-applet-sysinfo
-   
+    kdePackages.dolphin
+    kdePackages.konsole
+    kdePackages.kdeconnect-kde
+    kdePackages.plasma-workspace
   ];
 }
