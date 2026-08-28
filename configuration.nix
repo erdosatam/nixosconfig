@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports = [
@@ -31,6 +31,8 @@
     QT_QPA_PLATFORM = "wayland";
     GDK_BACKEND = "wayland,x11";
     ELECTRON_OZONE_PLATFORM_HINT = "auto";
+    NIXOS_OZONE_WL = "1";
+    XDG_SESSION_TYPE = "wayland";
     XCURSOR_THEME = "Bibata-Original-Ice";
     XCURSOR_SIZE = "16";
   };
@@ -63,10 +65,13 @@
     implementation = "broker";
   };
 
+  security.polkit.enable = true;
+  
   # Portálok és GTK támogatás biztosítása az ikonok átadásához
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-cosmic ];
+    wlr.enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-wlr ];
     config.common.default = "*";
   };
 
@@ -76,22 +81,19 @@
   time.timeZone = "Europe/Budapest";
   i18n.defaultLocale = "en_US.UTF-8";
 
-  # Cosmic desktop configuration.
+  # Cosmic desktop session and login manager.
   services.xserver.enable = true;
   programs.xwayland.enable = true;
+
+  services.desktopManager.cosmic.enable = true;
+  services.displayManager.cosmic-greeter.enable = true;
+  services.displayManager.defaultSession = "cosmic";
 
   # Billentyűzet kiosztás
   services.xserver.xkb = {
     layout = "hu";
     variant = "";
   };
-# Enable the native COSMIC login manager (disables/bypasses LightDM, GDM, SDDM)
-  services.displayManager.cosmic-greeter.enable = true;
- 
-  # Ensure LightDM and xserver display managers are turned off (if previously set)
-  services.xserver.displayManager.lightdm.enable = false;
-  services.displayManager.defaultSession = "cosmic";
-  services.desktopManager.cosmic.enable = true;
 
   # Fish shell engedélyezése rendszer szinten
   programs.fish.enable = true;
@@ -110,6 +112,7 @@
       "podman"
       "docker"
       "gamemode"
+      "flatpak"
     ];
     shell = pkgs.fish;
   };
@@ -128,9 +131,16 @@
   environment.systemPackages = with pkgs; [
     adwaita-icon-theme
     pop-gtk-theme
+    cosmic-ext-applet-caffeine
     bibata-cursors
+    wofi
+    grim
+    slurp
+    wl-clipboard
     upower
     xwayland-satellite
+    cosmic-ext-tweaks
+    cosmic-ext-applet-sysinfo
     libmtp
     mtpfs
   ];

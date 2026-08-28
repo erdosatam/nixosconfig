@@ -19,6 +19,9 @@ fonts = {
    	vim
 	neovim
   ripgrep
+  hx-lsp
+  gtk3
+  gtk4
   fzf
 	flatpak
 	flatpak-xdg-utils
