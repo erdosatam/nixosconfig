@@ -11,7 +11,7 @@
     ./gaming.nix
     ./packages.nix
     ./flatpak.nix
-    ./cosmic-desktop.nix
+    ./plasma-desktop.nix
   ];
 
   environment.sessionVariables = {
