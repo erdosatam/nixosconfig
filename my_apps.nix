@@ -20,6 +20,7 @@ fonts = {
 	neovim
   ripgrep
   helix
+  hx-lsp
   gtk3
   gtk4
   fzf
