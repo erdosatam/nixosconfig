@@ -64,6 +64,7 @@
     cosmic-ext-applet-caffeine
     cosmic-ext-tweaks
     cosmic-ext-applet-sysinfo
-   
+   cosmic-ext-calculator
+   cosmic-ext-ctl
   ];
 }
