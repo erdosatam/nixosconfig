@@ -18,6 +18,7 @@
     mtpfs
     bibata-cursors
     gamescope
+    doublecmd
     wofi
     grim
     wl-clipboard
