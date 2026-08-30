@@ -17,6 +17,7 @@
     pop-gtk-theme
     mtpfs
     bibata-cursors
+    gamecope
     wofi
     grim
     wl-clipboard
