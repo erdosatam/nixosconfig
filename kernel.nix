@@ -1,0 +1,31 @@
+{ config, pkgs, ... }:
+
+{
+
+  boot.kernelPackages = pkgs.pkgs.linuxPackages_zen;
+
+
+  # Kernel paraméterek
+  boot.kernelParams = [
+    "amdgpu.dpm=1"
+    "amdgpu.runpm=1"
+    "amdgpu.dc=1"
+    "amdgpu.audio=0"
+    "preempt=full"
+    "mitigations=off"
+    "amdgpu.ppfeaturemask=0xffffffff"
+    "threadirqs"
+  ];
+
+  services.power-profiles-daemon.enable = false;
+
+  # TLP Power Management
+  services.tlp = {
+    enable = true;
+    settings = {
+      CPU_SCALING_GOVERNOR_ON_AC = "performance";
+      CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+      CPU_HWP_ON_AC = "performance";
+    };
+  };
+}
