@@ -7,7 +7,6 @@
     ./hw_gpu.nix
     ./hw_audio.nix
     ./dev_core.nix
-    ./studio_apps.nix
     ./gaming.nix
     ./packages.nix
     ./flatpak.nix

@@ -16,6 +16,7 @@
     adwaita-icon-theme
     pop-gtk-theme
     mtpfs
+    qpwgraph
     bibata-cursors
     gamescope
     wofi
