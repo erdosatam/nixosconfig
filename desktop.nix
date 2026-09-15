@@ -117,5 +117,9 @@
     alacritty
     ironbar
     polkit_gnome
+    thunar
+    thunar-volman
+    thunar-vcs-plugin
+    thunar-archive-plugin
   ];
 }
