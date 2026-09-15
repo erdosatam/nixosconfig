@@ -94,5 +94,6 @@
     swaylock
     waybar
     alacritty
+    ironbar
   ];
 }
