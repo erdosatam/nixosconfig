@@ -95,5 +95,6 @@
     waybar
     alacritty
     ironbar
+    polkit_gnome
   ];
 }
