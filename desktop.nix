@@ -41,10 +41,35 @@
 
   programs.xwayland.enable = true;
 
-  services.desktopManager.cosmic.enable = true;
-  services.displayManager = {
-    defaultSession = "cosmic";
-    cosmic-greeter.enable = true;
+  programs.sway = {
+    enable = true;
+    package = pkgs.swayfx;
+    wrapperFeatures.gtk = true;
+    extraPackages = with pkgs; [
+      swaylock
+      swayidle
+      waybar
+      mako
+      dmenu
+      foot
+      wl-clipboard
+      grim
+      slurp
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-wlr
+    ];
+  };
+
+  security.pam.services.greetd.enable = true;
+
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --remember-user-session --cmd ${pkgs.swayfx}/bin/sway";
+        user = "greeter";
+      };
+    };
   };
 
   services.xserver.xkb = {
@@ -64,12 +89,10 @@
   services.upower.enable = true;
 
   environment.systemPackages = with pkgs; [
-    cosmic-ext-applet-caffeine
-    cosmic-ext-tweaks
-    cosmic-ext-applet-sysinfo
-    cosmic-monitor
-    cosmic-ext-calculator
-    cosmic-ext-ctl
-    cosmic-applets
+    swayfx
+    swaybg
+    swaylock
+    waybar
+    alacritty
   ];
 }
