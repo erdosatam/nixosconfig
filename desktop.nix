@@ -88,6 +88,27 @@
   hardware.sane.enable = true;
   services.upower.enable = true;
 
+  security.polkit.extraConfig = ''
+  /* Újraindítás és leállítás engedélyezése a wheel csoportnak jelszó nélkül */
+  polkit.addRule(function(action, subject) {
+    if ((action.id == "org.freedesktop.login1.reboot" ||
+         action.id == "org.freedesktop.login1.reboot-multiple-sessions" ||
+         action.id == "org.freedesktop.login1.power-off" ||
+         action.id == "org.freedesktop.login1.power-off-multiple-sessions") &&
+        subject.isInGroup("wheel")) {
+      return polkit.Result.YES;
+    }
+  });
+
+  /* Flatpak rendszerfüggő műveletek engedélyezése a wheel csoportnak */
+  polkit.addRule(function(action, subject) {
+    if (action.id.indexOf("org.freedesktop.Flatpak.") === 0 &&
+        subject.isInGroup("wheel")) {
+      return polkit.Result.YES;
+    }
+  });
+'';
+
   environment.systemPackages = with pkgs; [
     swayfx
     swaybg
