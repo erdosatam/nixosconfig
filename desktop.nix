@@ -123,5 +123,6 @@
     thunar-archive-plugin
     networkmanagerapplet
     networkmanager_dmenu
+    fuzzel
   ];
 }
