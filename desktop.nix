@@ -121,5 +121,7 @@
     thunar-volman
     thunar-vcs-plugin
     thunar-archive-plugin
+    networkmanagerapplet
+    networkmanager_dmenu
   ];
 }
