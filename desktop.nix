@@ -124,7 +124,9 @@
     networkmanagerapplet
     networkmanager_dmenu
     fuzzel
-    python314Packages.i3ipc
+    (python3.withPackages (ps: with ps; [
+      i3ipc
+    ]))
     sway-assign-cgroups
   ];
 }
