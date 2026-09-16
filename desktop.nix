@@ -41,10 +41,35 @@
 
   programs.xwayland.enable = true;
 
-  services.desktopManager.cosmic.enable = true;
-  services.displayManager = {
-    defaultSession = "cosmic";
-    cosmic-greeter.enable = true;
+  programs.sway = {
+    enable = true;
+    package = pkgs.swayfx;
+    wrapperFeatures.gtk = true;
+    extraPackages = with pkgs; [
+      swaylock
+      swayidle
+      waybar
+      mako
+      dmenu
+      foot
+      wl-clipboard
+      grim
+      slurp
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-wlr
+    ];
+  };
+
+  security.pam.services.greetd.enable = true;
+
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --remember-user-session --cmd ${pkgs.swayfx}/bin/sway";
+        user = "greeter";
+      };
+    };
   };
 
   services.xserver.xkb = {
@@ -63,13 +88,45 @@
   hardware.sane.enable = true;
   services.upower.enable = true;
 
+  security.polkit.extraConfig = ''
+  /* Újraindítás és leállítás engedélyezése a wheel csoportnak jelszó nélkül */
+  polkit.addRule(function(action, subject) {
+    if ((action.id == "org.freedesktop.login1.reboot" ||
+         action.id == "org.freedesktop.login1.reboot-multiple-sessions" ||
+         action.id == "org.freedesktop.login1.power-off" ||
+         action.id == "org.freedesktop.login1.power-off-multiple-sessions") &&
+        subject.isInGroup("wheel")) {
+      return polkit.Result.YES;
+    }
+  });
+
+  /* Flatpak rendszerfüggő műveletek engedélyezése a wheel csoportnak */
+  polkit.addRule(function(action, subject) {
+    if (action.id.indexOf("org.freedesktop.Flatpak.") === 0 &&
+        subject.isInGroup("wheel")) {
+      return polkit.Result.YES;
+    }
+  });
+'';
+
   environment.systemPackages = with pkgs; [
-    cosmic-ext-applet-caffeine
-    cosmic-ext-tweaks
-    cosmic-ext-applet-sysinfo
-    cosmic-monitor
-    cosmic-ext-calculator
-    cosmic-ext-ctl
-    cosmic-applets
+    swayfx
+    swaybg
+    swaylock
+    waybar
+    alacritty
+    ironbar
+    polkit_gnome
+    thunar
+    thunar-volman
+    thunar-vcs-plugin
+    thunar-archive-plugin
+    networkmanagerapplet
+    networkmanager_dmenu
+    fuzzel
+    (python3.withPackages (ps: with ps; [
+      i3ipc
+    ]))
+    sway-assign-cgroups
   ];
 }
