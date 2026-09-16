@@ -124,5 +124,6 @@
     networkmanagerapplet
     networkmanager_dmenu
     fuzzel
+    python313Packages.i3ipc
   ];
 }
