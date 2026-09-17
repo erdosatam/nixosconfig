@@ -41,11 +41,21 @@
 
   programs.xwayland.enable = true;
 
+  systemd.tmpfiles.rules = [
+    "d /usr/share/wallpapers 0755 root root -"
+    "L+ /usr/share/wallpapers/login.png - - - - ${./wallpapers/login.png}"
+    "L+ /usr/share/wallpapers/tgla_wall.png - - - - ${./wallpapers/tgla_wall.png}"
+  ];
+
   services.displayManager = {
     sddm = {
       enable = true;
-      package = pkgs.kdePackages.plasma-login-manager;
       wayland.enable = true;
+      settings = {
+        General = {
+          Background = "/usr/share/wallpapers/login.png";
+        };
+      };
     };
     defaultSession = "plasma";
   };
