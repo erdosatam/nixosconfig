@@ -28,8 +28,6 @@
     implementation = "broker";
   };
 
-  services.blueman.enable = true;
-
   security.polkit.enable = true;
 
   xdg.portal = {
