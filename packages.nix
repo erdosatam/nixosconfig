@@ -11,6 +11,7 @@
 
   environment.systemPackages = with pkgs; [
     vim
+    wirelesstools
     neovim
     libmtp
     adwaita-icon-theme
