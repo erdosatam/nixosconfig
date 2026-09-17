@@ -13,6 +13,7 @@
     vim
     wirelesstools
     neovim
+    adw-gtk3
     libmtp
     adwaita-icon-theme
     pop-gtk-theme
