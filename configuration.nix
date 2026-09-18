@@ -6,6 +6,7 @@
     ./kernel.nix
     ./hw_gpu.nix
     ./hw_audio.nix
+    ./hw_net,nix
     ./dev_core.nix
     ./gaming.nix
     ./packages.nix
