@@ -23,7 +23,6 @@
     XDG_SESSION_TYPE = "wayland";
     XCURSOR_THEME = "Bibata-Original-Ice";
     XCURSOR_SIZE = "16";
-    GTK_MODULES = "appmenu-gtk-module";
   };
 
 
