@@ -73,12 +73,6 @@
     shell = pkgs.fish;
   };
 
-  users.users.greeter = {
-    isSystemUser = true;
-    group = "greeter";
-  };
-  users.groups.greeter = {};
-
   # Rendszer verzió (ne módosítsd telepítés után)
   system.stateVersion = "26.05";
 }

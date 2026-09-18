@@ -28,8 +28,6 @@
     implementation = "broker";
   };
 
-  services.blueman.enable = true;
-
   security.polkit.enable = true;
 
   xdg.portal = {
@@ -41,36 +39,26 @@
 
   programs.xwayland.enable = true;
 
-  programs.sway = {
-    enable = true;
-    package = pkgs.swayfx;
-    wrapperFeatures.gtk = true;
-    extraPackages = with pkgs; [
-      swaylock
-      swayidle
-      waybar
-      mako
-      dmenu
-      foot
-      wl-clipboard
-      grim
-      slurp
-      xdg-desktop-portal-gtk
-      xdg-desktop-portal-wlr
-    ];
-  };
+  systemd.tmpfiles.rules = [
+    "d /usr/share/wallpapers 0755 root root -"
+    "L+ /usr/share/wallpapers/login.png - - - - ${./wallpapers/login.png}"
+    "L+ /usr/share/wallpapers/tgla_wall.png - - - - ${./wallpapers/tgla_wall.png}"
+  ];
 
-  security.pam.services.greetd.enable = true;
-
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --remember-user-session --cmd ${pkgs.swayfx}/bin/sway";
-        user = "greeter";
+  services.displayManager = {
+    sddm = {
+      enable = true;
+      wayland.enable = true;
+      settings = {
+        Theme = {
+          Background = "/usr/share/wallpapers/login.png";
+        };
       };
     };
+    defaultSession = "plasma";
   };
+
+  services.desktopManager.plasma6.enable = true;
 
   services.xserver.xkb = {
     layout = "hu";
@@ -110,23 +98,9 @@
 '';
 
   environment.systemPackages = with pkgs; [
-    swayfx
-    swaybg
-    swaylock
-    waybar
-    alacritty
-    ironbar
-    polkit_gnome
-    thunar
-    thunar-volman
-    thunar-vcs-plugin
-    thunar-archive-plugin
-    networkmanagerapplet
-    networkmanager_dmenu
-    fuzzel
-    (python3.withPackages (ps: with ps; [
-      i3ipc
-    ]))
-    sway-assign-cgroups
+    appmenu-glib-translator
+    libdbusmenu-gtk3
+    libdbusmenu-gtk2
+    libdbusmenu
   ];
 }
