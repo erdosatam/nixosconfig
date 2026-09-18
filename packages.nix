@@ -15,6 +15,7 @@
     neovim
     adw-gtk3
     libmtp
+    desktop-file-utils
     adwaita-icon-theme
     pop-gtk-theme
     mtpfs
