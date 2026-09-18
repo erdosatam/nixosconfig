@@ -98,6 +98,9 @@
 '';
 
   environment.systemPackages = with pkgs; [
-   
+    appmenu-glib-translator
+    libdbusmenu-gtk3
+    libdbusmenu-gtk2
+    libdbusmenu
   ];
 }
