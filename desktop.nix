@@ -50,7 +50,7 @@
       enable = true;
       wayland.enable = true;
       settings = {
-        General = {
+        Theme = {
           Background = "/usr/share/wallpapers/login.png";
         };
       };
