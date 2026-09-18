@@ -14,6 +14,7 @@
     wirelesstools
     neovim
     adw-gtk3
+    pciutils
     libmtp
     desktop-file-utils
     adwaita-icon-theme
