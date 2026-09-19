@@ -1,23 +1,6 @@
 { config, pkgs, lib, ... }:
 
 {
-  
-  environment.variables = {
-    XCURSOR_THEME = "Bibata-Original-Ice";
-    XCURSOR_SIZE = "16";
-  };
-
-  environment.etc."gtk-3.0/settings.ini".text = ''
-    [Settings]
-    gtk-cursor-theme-name = Bibata-Original-Ice
-    gtk-cursor-theme-size = 16
-  '';
-
-  environment.etc."gtk-4.0/settings.ini".text = ''
-    [Settings]
-    gtk-cursor-theme-name = Bibata-Original-Ice
-    gtk-cursor-theme-size = 16
-  '';
 
   fonts.packages = with pkgs; [
     nerd-fonts.fira-code

@@ -22,8 +22,6 @@
     ELECTRON_OZONE_PLATFORM_HINT = "auto";
     NIXOS_OZONE_WL = "1";
     XDG_SESSION_TYPE = "wayland";
-    XCURSOR_THEME = "Bibata-Original-Ice";
-    XCURSOR_SIZE = "16";
   };
 
 
