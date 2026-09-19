@@ -85,5 +85,6 @@
     libdbusmenu-gtk3
     libdbusmenu-gtk2
     libdbusmenu
+    ladybird
   ];
 }
