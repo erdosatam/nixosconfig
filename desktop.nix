@@ -91,6 +91,7 @@
     libdbusmenu-gtk3
     libdbusmenu-gtk2
     libdbusmenu
-    kdePackages.kdeconnect-kde
-  ];
+    gnome-tweaks
+  ]
+  ;
 }
