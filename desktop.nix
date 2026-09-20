@@ -41,7 +41,7 @@
     defaultSession = "plasma";
   };
 
-  services.desktopManager.plasma6.enable = true;
+  services.desktopManager.lxqt.enable = true;
 
   services.xserver.xkb = {
     layout = "hu";
