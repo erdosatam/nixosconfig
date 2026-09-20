@@ -22,6 +22,16 @@
 
   programs.xwayland.enable = true;
 
+  programs.dconf.enable = true;
+  programs.dconf.profiles.gdm = {
+    settings = {
+      "org/gnome/desktop/background" = {
+        picture-uri = "file:///usr/share/wallpapers/login.png";
+        picture-uri-dark = "file:///usr/share/wallpapers/login.png";
+      };
+    };
+  };
+
   systemd.tmpfiles.rules = [
     "d /usr/share/wallpapers 0755 root root -"
     "L+ /usr/share/wallpapers/login.png - - - - ${./wallpapers/login.png}"
@@ -29,19 +39,14 @@
   ];
 
   services.displayManager = {
-    sddm = {
+    gdm = {
       enable = true;
-      wayland.enable = true;
-      settings = {
-        Theme = {
-          Background = "/usr/share/wallpapers/login.png";
-        };
-      };
+      wayland = true;
     };
-    defaultSession = "plasma";
+    defaultSession = "gnome";
   };
 
-  services.desktopManager.plasma6.enable = true;
+  services.desktopManager.gnome.enable = true;
 
   services.xserver.xkb = {
     layout = "hu";
@@ -85,5 +90,6 @@
     libdbusmenu-gtk3
     libdbusmenu-gtk2
     libdbusmenu
+    kdePackages.kdeconnect-kde
   ];
 }
