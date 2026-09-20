@@ -24,12 +24,14 @@
 
   programs.dconf.enable = true;
   programs.dconf.profiles.gdm = {
-    settings = {
-      "org/gnome/desktop/background" = {
-        picture-uri = "file:///usr/share/wallpapers/login.png";
-        picture-uri-dark = "file:///usr/share/wallpapers/login.png";
+    databases = [{
+      settings = {
+        "org/gnome/desktop/background" = {
+          picture-uri = "file:///usr/share/wallpapers/login.png";
+          picture-uri-dark = "file:///usr/share/wallpapers/login.png";
+        };
       };
-    };
+    }];
   };
 
   systemd.tmpfiles.rules = [
