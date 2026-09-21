@@ -15,11 +15,9 @@
 
   xdg.portal = {
     enable = true;
-    wlr.enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-wlr ];
+    extraPortals = [ pkgs.xdg-desktop-portal-kde ];
     config.common.default = "*";
   };
-
   programs.xwayland.enable = true;
 
   systemd.tmpfiles.rules = [
