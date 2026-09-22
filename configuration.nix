@@ -10,7 +10,7 @@
     ./dev_core.nix
     ./gaming.nix
     ./packages.nix
-    ./flatpak.nix
+#    ./flatpak.nix
     ./desktop.nix
   ];
 
