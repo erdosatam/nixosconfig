@@ -10,6 +10,7 @@
   fonts.fontDir.enable = true;
 
   environment.systemPackages = with pkgs; [
+    android-tools
     vim
     wirelesstools
     neovim
