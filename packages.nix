@@ -10,6 +10,8 @@
   fonts.fontDir.enable = true;
 
   environment.systemPackages = with pkgs; [
+    python3 
+    python3Packages.pip
     android-tools
     pmbootstrap
     vim
