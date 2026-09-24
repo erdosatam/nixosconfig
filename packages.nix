@@ -11,6 +11,7 @@
 
   environment.systemPackages = with pkgs; [
     android-tools
+    pmbootstrap
     vim
     wirelesstools
     neovim
