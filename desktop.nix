@@ -73,5 +73,6 @@
     networkmanagerapplet
     wlrctl
     mako
+    kdotool
   ];
 }
