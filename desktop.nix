@@ -76,6 +76,5 @@
     kdotool
     python3Packages.pywayland
     wayfirePlugins.wayfire-plugins-extra # Tartalmazza az IPC modult (libipc.so)
-    python3Packages.wayfire
   ];
 }
