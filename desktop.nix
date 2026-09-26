@@ -72,6 +72,6 @@
     fuzzel
     networkmanagerapplet
     wlrctl
-    awww
+    mako
   ];
 }
