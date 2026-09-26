@@ -71,5 +71,6 @@
     ironbar
     fuzzel
     networkmanagerapplet
+    wlrctl
   ];
 }
