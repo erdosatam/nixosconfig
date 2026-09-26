@@ -74,5 +74,6 @@
     wlrctl
     mako
     kdotool
+    python314Packages.pywayland
   ];
 }
