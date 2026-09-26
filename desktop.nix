@@ -70,5 +70,6 @@
   environment.systemPackages = with pkgs; [
     ironbar
     fuzzel
+    networkmanagerapplet
   ];
 }
