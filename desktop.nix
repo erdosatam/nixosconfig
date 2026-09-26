@@ -72,5 +72,6 @@
     fuzzel
     networkmanagerapplet
     wlrctl
+    awww
   ];
 }
