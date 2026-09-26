@@ -68,7 +68,7 @@
   services.upower.enable = true;
 
   environment.systemPackages = with pkgs; [
-    ironbar
+    waybar
     fuzzel
     networkmanagerapplet
     wlrctl
