@@ -62,13 +62,13 @@
     package = pkgs.gnome.gvfs;
   };
 
-  programs.fuse.userAllowOther = true;
+  programs.fuse.userallowother = true;
   services.accounts-daemon.enable = true;
   services.tumbler.enable = true;
   hardware.sane.enable = true;
   services.upower.enable = true;
 
-  environment.systemPackages = with pkgs; [
+  environment.systempackages = with pkgs; [
     waybar
     fuzzel
     networkmanagerapplet
@@ -79,6 +79,10 @@
     jq
     python3Packages.pywayland
     pavucontrol
+    thunar
+    thunar-volman
+    thunar-vcs-plugin
+    thunar-archive-plugin
     wayfirePlugins.wayfire-plugins-extra # Tartalmazza az IPC modult (libipc.so)
   ];
 }
