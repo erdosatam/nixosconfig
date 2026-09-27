@@ -15,6 +15,7 @@
     "mitigations=off"
     "amdgpu.ppfeaturemask=0xffffffff"
     "threadirqs"
+    "usbcore.usbfs_memory_mb=1000"
   ];
 
   services.power-profiles-daemon.enable = false;

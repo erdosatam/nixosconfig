@@ -10,6 +10,11 @@
   fonts.fontDir.enable = true;
 
   environment.systemPackages = with pkgs; [
+    heimdal
+    python3 
+    python3Packages.pip
+    android-tools
+    pmbootstrap
     vim
     wirelesstools
     neovim
