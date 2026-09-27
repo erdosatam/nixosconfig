@@ -28,6 +28,7 @@
     implementation = "broker";
   };
 
+  services.blueman.enable = true;
 
   security.polkit.enable = true;
 
@@ -74,6 +75,7 @@
     wlrctl
     mako
     kdotool
+    xdotool
     python3Packages.pywayland
     wayfirePlugins.wayfire-plugins-extra # Tartalmazza az IPC modult (libipc.so)
   ];
