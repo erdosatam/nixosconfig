@@ -74,8 +74,9 @@
     networkmanagerapplet
     wlrctl
     mako
-    kdotool
     xdotool
+    sway
+    jq
     python3Packages.pywayland
     wayfirePlugins.wayfire-plugins-extra # Tartalmazza az IPC modult (libipc.so)
   ];
