@@ -75,7 +75,7 @@
     wlrctl
     mako
     xdotool
-    sway
+    wayfirePlugins.wf-shell
     jq
     python3Packages.pywayland
     wayfirePlugins.wayfire-plugins-extra # Tartalmazza az IPC modult (libipc.so)
