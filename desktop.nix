@@ -62,13 +62,13 @@
     package = pkgs.gnome.gvfs;
   };
 
-  programs.fuse.userallowother = true;
+  programs.fuse.userAllowOther = true;
   services.accounts-daemon.enable = true;
   services.tumbler.enable = true;
   hardware.sane.enable = true;
   services.upower.enable = true;
 
-  environment.systempackages = with pkgs; [
+  environment.systemPackages = with pkgs; [
     waybar
     fuzzel
     networkmanagerapplet
