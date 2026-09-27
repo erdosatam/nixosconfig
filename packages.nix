@@ -13,6 +13,7 @@
     heimdal
     python3 
     python3Packages.pip
+    uv
     android-tools
     pmbootstrap
     vim

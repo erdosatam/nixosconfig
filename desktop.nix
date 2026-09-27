@@ -78,6 +78,7 @@
     wayfirePlugins.wf-shell
     jq
     python3Packages.pywayland
+    python3Packages.wayfire
     wayfirePlugins.wayfire-plugins-extra # Tartalmazza az IPC modult (libipc.so)
   ];
 }
