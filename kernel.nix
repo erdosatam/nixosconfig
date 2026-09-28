@@ -16,6 +16,7 @@
     "amdgpu.ppfeaturemask=0xffffffff"
     "threadirqs"
     "usbcore.usbfs_memory_mb=1000"
+    "pcie_aspm=off"
   ];
 
   services.power-profiles-daemon.enable = false;

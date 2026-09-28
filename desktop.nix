@@ -28,8 +28,6 @@
     implementation = "broker";
   };
 
-  services.blueman.enable = true;
-
   security.polkit.enable = true;
 
   xdg.portal = {
@@ -41,16 +39,26 @@
 
   programs.xwayland.enable = true;
 
-  programs.wayfire.enable = true;
+  systemd.tmpfiles.rules = [
+    "d /usr/share/wallpapers 0755 root root -"
+    "L+ /usr/share/wallpapers/login.png - - - - ${./wallpapers/login.png}"
+    "L+ /usr/share/wallpapers/tgla_wall.png - - - - ${./wallpapers/tgla_wall.png}"
+  ];
 
-  services.displayManager.defaultSession = "wayfire";
-  services.greetd = {
-    enable = true;
-    settings.default_session = {
-      command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-user-session";
-      user = "greeter";
+  services.displayManager = {
+    sddm = {
+      enable = true;
+      wayland.enable = true;
+      settings = {
+        Theme = {
+          Background = "/usr/share/wallpapers/login.png";
+        };
+      };
     };
+    defaultSession = "plasma";
   };
+
+  services.desktopManager.plasma6.enable = true;
 
   services.xserver.xkb = {
     layout = "hu";
@@ -68,21 +76,31 @@
   hardware.sane.enable = true;
   services.upower.enable = true;
 
+  security.polkit.extraConfig = ''
+  /* Újraindítás és leállítás engedélyezése a wheel csoportnak jelszó nélkül */
+  polkit.addRule(function(action, subject) {
+    if ((action.id == "org.freedesktop.login1.reboot" ||
+         action.id == "org.freedesktop.login1.reboot-multiple-sessions" ||
+         action.id == "org.freedesktop.login1.power-off" ||
+         action.id == "org.freedesktop.login1.power-off-multiple-sessions") &&
+        subject.isInGroup("wheel")) {
+      return polkit.Result.YES;
+    }
+  });
+
+  /* Flatpak rendszerfüggő műveletek engedélyezése a wheel csoportnak */
+  polkit.addRule(function(action, subject) {
+    if (action.id.indexOf("org.freedesktop.Flatpak.") === 0 &&
+        subject.isInGroup("wheel")) {
+      return polkit.Result.YES;
+    }
+  });
+'';
+
   environment.systemPackages = with pkgs; [
-    waybar
-    fuzzel
-    networkmanagerapplet
-    wlrctl
-    mako
-    xdotool
-    wayfirePlugins.wf-shell
-    jq
-    python3Packages.pywayland
-    pavucontrol
-    thunar
-    thunar-volman
-    thunar-vcs-plugin
-    thunar-archive-plugin
-    wayfirePlugins.wayfire-plugins-extra # Tartalmazza az IPC modult (libipc.so)
+    appmenu-glib-translator
+    libdbusmenu-gtk3
+    libdbusmenu-gtk2
+    libdbusmenu
   ];
 }
