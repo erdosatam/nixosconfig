@@ -102,5 +102,7 @@
     libdbusmenu-gtk3
     libdbusmenu-gtk2
     libdbusmenu
+    qt6Packages.accounts-qt
+    kdePackages.korganizer
   ];
 }
