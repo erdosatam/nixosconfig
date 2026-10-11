@@ -8,13 +8,6 @@
     defaultNetwork.settings.dns_enabled = true;
   };
 
-  systemd.user.sockets.podman = {
-    wantedBy = [ "sockets.target" ];
-    socketConfig = {
-      ListenStream = "%t/podman/podman.sock";
-      SocketMode = "0660";
-    };
-  };
 
   virtualisation.containers.containersConf.settings = {
     engine = {
