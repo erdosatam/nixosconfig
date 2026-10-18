@@ -56,6 +56,7 @@
     bash
     ripgrep-all
     fzf
+    neovim-gtk
     sassc
     nodejs
     papirus-icon-theme
