@@ -79,7 +79,6 @@
   services.accounts-daemon.enable = true;
   servic-es.tumbler.enable = true;
   hardware.sane.enable = true;
-  hardware.bluetooth.enable = true;
   services.blueman.enable = true;
   services.upower.enable = true;
 
