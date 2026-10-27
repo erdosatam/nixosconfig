@@ -77,8 +77,10 @@
 
   programs.fuse.userAllowOther = true;
   services.accounts-daemon.enable = true;
-  services.tumbler.enable = true;
+  servic-es.tumbler.enable = true;
   hardware.sane.enable = true;
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
   services.upower.enable = true;
 
   environment.systemPackages = with pkgs; [
