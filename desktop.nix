@@ -40,10 +40,17 @@
 
   programs.xwayland.enable = true;
 
-  services.desktopManager.cosmic.enable = true;
-  services.displayManager = {
-    defaultSession = "cosmic";
-    cosmic-greeter.enable = true;
+  programs.sway = {
+    enable = true;
+    package = pkgs.swayfx;
+  };
+
+  services.greetd = {
+    enable = true;
+    settings.default_session = {
+      command = "${pkgs.tuigreet}/bin/tuigreet --remember --time --cmd sway";
+      user = "greeter";
+    };
   };
 
   services.xserver.xkb = {
@@ -63,12 +70,7 @@
   services.upower.enable = true;
 
   environment.systemPackages = with pkgs; [
-    cosmic-ext-applet-caffeine
-    cosmic-ext-tweaks
-    cosmic-ext-applet-sysinfo
-    cosmic-monitor
-    cosmic-ext-calculator
-    cosmic-ext-ctl
-    cosmic-applets
+    ironbar
+    fuzzel
   ];
 }
