@@ -31,6 +31,18 @@
 
   security.polkit.enable = true;
 
+  # wheel csoport jelszó nélkül: reboot/poweroff és flatpak rendszerszintű műveletek
+  security.polkit.extraConfig = ''
+    polkit.addRule(function(action, subject) {
+      if (subject.isInGroup("wheel") && (
+        action.id.indexOf("org.freedesktop.login1.") == 0 ||
+        action.id.indexOf("org.freedesktop.Flatpak.") == 0
+      )) {
+        return polkit.Result.YES;
+      }
+    });
+  '';
+
   xdg.portal = {
     enable = true;
     wlr.enable = true;
