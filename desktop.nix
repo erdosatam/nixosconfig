@@ -87,5 +87,7 @@
     ironbar
     fuzzel
     networkmanagerapplet
+    thunar
+    thunar-volman
   ];
 }
