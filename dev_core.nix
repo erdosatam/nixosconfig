@@ -69,13 +69,11 @@
     gcc
     fd
     gnumake
-    python3
     stylua
     shfmt
     unzip
     cargo
     cairo
-    python3Packages.pycairo
     pkg-config
   ];
 }
