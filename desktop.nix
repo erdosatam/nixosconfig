@@ -89,5 +89,6 @@
     thunar
     thunar-volman
     waybar
+    sfwbar
   ];
 }
