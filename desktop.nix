@@ -89,5 +89,6 @@
     networkmanagerapplet
     thunar
     thunar-volman
+    python314Packages.i3ipc
   ];
 }
