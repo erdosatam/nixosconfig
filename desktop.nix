@@ -77,7 +77,8 @@
 
   programs.fuse.userAllowOther = true;
   services.accounts-daemon.enable = true;
-  servic-es.tumbler.enable = true;
+  services.tumbler.enable = true;
+  hardware.bluetooth.enable = true;
   hardware.sane.enable = true;
   services.blueman.enable = true;
   services.upower.enable = true;
