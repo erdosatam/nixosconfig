@@ -84,10 +84,10 @@
   services.upower.enable = true;
 
   environment.systemPackages = with pkgs; [
-    ironbar
     fuzzel
     networkmanagerapplet
     thunar
     thunar-volman
+    waybar
   ];
 }
