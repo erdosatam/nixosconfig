@@ -16,7 +16,8 @@
      # runtime = "runc";
   };
   };
-
+  
+  
   virtualisation.containers = {
     enable = true;
 
@@ -41,7 +42,6 @@
     subUidRanges = [{ startUid = 100000; count = 65536; }];
     subGidRanges = [{ startGid = 100000; count = 65536; }];
   };
-
 
   # Fejlesztői konténer eszközök
   environment.systemPackages = with pkgs; [
@@ -69,13 +69,11 @@
     gcc
     fd
     gnumake
-    python3
     stylua
     shfmt
     unzip
     cargo
     cairo
-    python3Packages.pycairo
     pkg-config
   ];
 }

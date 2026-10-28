@@ -31,6 +31,18 @@
 
   security.polkit.enable = true;
 
+  # wheel csoport jelszó nélkül: reboot/poweroff és flatpak rendszerszintű műveletek
+  security.polkit.extraConfig = ''
+    polkit.addRule(function(action, subject) {
+      if (subject.isInGroup("wheel") && (
+        action.id.indexOf("org.freedesktop.login1.") == 0 ||
+        action.id.indexOf("org.freedesktop.Flatpak.") == 0
+      )) {
+        return polkit.Result.YES;
+      }
+    });
+  '';
+
   xdg.portal = {
     enable = true;
     wlr.enable = true;
@@ -40,10 +52,17 @@
 
   programs.xwayland.enable = true;
 
-  services.desktopManager.cosmic.enable = true;
-  services.displayManager = {
-    defaultSession = "cosmic";
-    cosmic-greeter.enable = true;
+  programs.sway = {
+    enable = true;
+    package = pkgs.swayfx;
+  };
+
+  services.greetd = {
+    enable = true;
+    settings.default_session = {
+      command = "${pkgs.tuigreet}/bin/tuigreet --remember --time --cmd sway";
+      user = "greeter";
+    };
   };
 
   services.xserver.xkb = {
@@ -59,16 +78,17 @@
   programs.fuse.userAllowOther = true;
   services.accounts-daemon.enable = true;
   services.tumbler.enable = true;
+  hardware.bluetooth.enable = true;
   hardware.sane.enable = true;
+  services.blueman.enable = true;
   services.upower.enable = true;
 
   environment.systemPackages = with pkgs; [
-    cosmic-ext-applet-caffeine
-    cosmic-ext-tweaks
-    cosmic-ext-applet-sysinfo
-    cosmic-monitor
-    cosmic-ext-calculator
-    cosmic-ext-ctl
-    cosmic-applets
+    fuzzel
+    networkmanagerapplet
+    thunar
+    thunar-volman
+    waybar
+    sfwbar
   ];
 }

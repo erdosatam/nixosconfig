@@ -11,8 +11,7 @@
 
   environment.systemPackages = with pkgs; [
     heimdal
-    python3 
-    python3Packages.pip
+    (python3.withPackages (ps: [ ps.i3ipc ps.pip ps.pycairo ]))
     uv
     android-tools
     pmbootstrap
