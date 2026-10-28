@@ -62,6 +62,26 @@
     mesa
     systemd
     libglvnd
+# X11 függőségek:
+    xorg.libX11
+    xorg.libXcomposite
+    xorg.libXcursor
+    xorg.libXdamage
+    xorg.libXext
+    xorg.libXfixes
+    xorg.libXi
+    xorg.libXrandr
+    xorg.libXrender
+    xorg.libXss
+    xorg.libXtst
+    libxcb
+    libxshmfence
+
+  # ÚJ: Wayland függőségek
+    wayland
+    wayland-protocols
+    libdecor
+    
   ];
 
   # Fejlesztői konténer eszközök
