@@ -17,7 +17,6 @@
   };
   };
   
-  programs.nix-ld.enable = true;
   
   virtualisation.containers = {
     enable = true;
@@ -43,46 +42,6 @@
     subUidRanges = [{ startUid = 100000; count = 65536; }];
     subGidRanges = [{ startGid = 100000; count = 65536; }];
   };
-
-  programs.nix-ld.libraries = with pkgs; [
-  # Alapvető könyvtárak, amiket a legtöbb letöltött bináris (pl. VS Code, Chrome, Electron appok) keres
-    glib
-    gtk3
-    nss
-    nspr
-    dbus
-    atk
-    cups
-    libdrm
-    expat
-    libxkbcommon
-    pango
-    cairo
-    alsa-lib
-    mesa
-    systemd
-    libglvnd
-# X11 függőségek:
-    xorg.libX11
-    xorg.libXcomposite
-    xorg.libXcursor
-    xorg.libXdamage
-    xorg.libXext
-    xorg.libXfixes
-    xorg.libXi
-    xorg.libXrandr
-    xorg.libXrender
-    xorg.libXss
-    xorg.libXtst
-    libxcb
-    libxshmfence
-
-  # ÚJ: Wayland függőségek
-    wayland
-    wayland-protocols
-    libdecor
-    
-  ];
 
   # Fejlesztői konténer eszközök
   environment.systemPackages = with pkgs; [
