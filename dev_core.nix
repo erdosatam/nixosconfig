@@ -44,6 +44,25 @@
     subGidRanges = [{ startGid = 100000; count = 65536; }];
   };
 
+  programs.nix-ld.libraries = with pkgs; [
+  # Alapvető könyvtárak, amiket a legtöbb letöltött bináris (pl. VS Code, Chrome, Electron appok) keres
+    glib
+    gtk3
+    nss
+    nspr
+    dbus
+    atk
+    cups
+    libdrm
+    expat
+    libxkbcommon
+    pango
+    cairo
+    alsa-lib
+    mesa
+    systemd
+    libglvnd
+  ];
 
   # Fejlesztői konténer eszközök
   environment.systemPackages = with pkgs; [
