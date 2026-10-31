@@ -15,6 +15,7 @@
     uv
     android-tools
     pmbootstrap
+    zed-editor
     vim
     wirelesstools
     neovim
