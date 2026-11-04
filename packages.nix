@@ -18,6 +18,7 @@
     vim
     wirelesstools
     neovim
+    usbutils
     adw-gtk3
     pciutils
     libmtp
