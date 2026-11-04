@@ -3,7 +3,9 @@
 {
   # Realtime prioritás a felhasználóknak (audio csoporthoz)
   security.rtkit.enable = true;
-
+  
+  hardware.enableRedistributableFirmware = true;
+  
   security.pam.loginLimits = [
     { domain = "*"; item = "rtprio"; type = "soft"; value = "99"; }
     { domain = "*"; item = "rtprio"; type = "hard"; value = "99"; }
