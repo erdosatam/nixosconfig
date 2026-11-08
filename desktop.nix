@@ -85,6 +85,7 @@
 
   environment.systemPackages = with pkgs; [
     fuzzel
+    mako
     networkmanagerapplet
     thunar
     thunar-volman
