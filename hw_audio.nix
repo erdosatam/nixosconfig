@@ -41,6 +41,7 @@
   # Kért szintetizátor és soundfont csomagok
   environment.systemPackages = with pkgs; [
     fluidsynth
+    pavucontrol
     soundfont-fluid
   ];
 }
