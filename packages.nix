@@ -16,6 +16,7 @@
     android-tools
     pmbootstrap
     vim
+    libnotify
     wirelesstools
     neovim
     usbutils
