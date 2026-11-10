@@ -10,6 +10,7 @@
   fonts.fontDir.enable = true;
 
   environment.systemPackages = with pkgs; [
+    lite-xl
     heimdal
     (python3.withPackages (ps: [ ps.i3ipc ps.pip ps.pycairo ]))
     uv
