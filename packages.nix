@@ -38,7 +38,6 @@
     upower
     slurp
     ripgrep
-    hx-lsp
     gtk3
     gtk4
     fzf
