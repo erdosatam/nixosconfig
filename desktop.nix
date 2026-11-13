@@ -87,6 +87,7 @@
     fuzzel
     mako
     networkmanagerapplet
+    networkmanager_dmenu
     thunar
     thunar-volman
     waybar
