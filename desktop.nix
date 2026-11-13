@@ -85,6 +85,7 @@
 
   environment.systemPackages = with pkgs; [
     fuzzel
+    swayr
     mako
     networkmanagerapplet
     networkmanager_dmenu
