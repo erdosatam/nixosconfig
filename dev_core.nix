@@ -6,6 +6,9 @@
     enable = true;
     dockerCompat = true; # podman-docker megfelelője NixOS-ben (docker parancs alias a podmanhoz)
     defaultNetwork.settings.dns_enabled = true;
+    # A rootless felhasználói socket automatikusan engedélyezett;
+    # a dockerSocket a rootful /run/docker.sock symlinket hozza létre.
+    dockerSocket.enable = true;
   };
 
 
