@@ -7,6 +7,8 @@
     XCURSOR_SIZE = "16";
   };
 
+  programs.light.enable = true;
+
   environment.etc."gtk-3.0/settings.ini".text = ''
     [Settings]
     gtk-cursor-theme-name = Bibata-Original-Ice
