@@ -7,7 +7,6 @@
     XCURSOR_SIZE = "16";
   };
 
-  programs.light.enable = true;
 
   environment.etc."gtk-3.0/settings.ini".text = ''
     [Settings]
@@ -87,6 +86,7 @@
 
   environment.systemPackages = with pkgs; [
     fuzzel
+    light
     swayr
     mako
     networkmanagerapplet
