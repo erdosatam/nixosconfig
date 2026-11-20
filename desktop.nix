@@ -29,8 +29,12 @@
     implementation = "broker";
   };
 
-
+  services.logind.enable = true;
   security.polkit.enable = true;
+
+  services.udev.extraRules = ''
+    ACTION=="add", SUBSYSTEM=="backlight", RUN+="${pkgs.coreutils}/bin/chgrp video /sys/class/backlight/%k/brightness", RUN+="${pkgs.coreutils}/bin/chmod g+w /sys/class/backlight/%k/brightness"
+  '';
 
   # wheel csoport jelszó nélkül: reboot/poweroff és flatpak rendszerszintű műveletek
   security.polkit.extraConfig = ''
@@ -86,7 +90,6 @@
 
   environment.systemPackages = with pkgs; [
     fuzzel
-    light
     swayr
     mako
     networkmanagerapplet
