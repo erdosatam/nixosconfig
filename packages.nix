@@ -14,6 +14,7 @@
     heimdal
     (python3.withPackages (ps: [ ps.i3ipc ps.pip ps.pycairo ]))
     uv
+    doublecmd
     android-tools
     pmbootstrap
     vim
