@@ -25,7 +25,7 @@
     enable = true;
 
     # Configure default search registries for podman/toolbox
-    registries.search = [
+    registries.settings.unqualified-search-registries = [
       "docker.io"
       "quay.io"
       "registry.fedoraproject.org"
