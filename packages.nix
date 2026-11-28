@@ -28,7 +28,7 @@
     desktop-file-utils
     adwaita-icon-theme
     pop-gtk-theme
-    mtpfs
+    mtp-mount
     qpwgraph
     bibata-cursors
     gamescope
@@ -50,7 +50,6 @@
     gst_all_1.gst-plugins-bad
     gst_all_1.gst-plugins-ugly
     gst_all_1.gst-libav
-    gst_all_1.gst-vaapi
     ffmpeg
     kitty
     wezterm
